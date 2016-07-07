@@ -71,7 +71,7 @@ This project adheres to the [Contributor Covenant](http://contributor-covenant.o
 Issues
 ----
 
-[Please report issues here.](https://github.com/styladev/testablereactions/issues)
+[Please report issues here.](https://github.com/styladev/testable-reactions/issues)
 
 + add any specific information that can help to reproduce and resolve the bug.
     + What did you do, when the bug appeared.
