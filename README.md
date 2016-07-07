@@ -6,18 +6,19 @@ Styla new project boilerplate
 
 this project includes:
 
-+ [React](#React)
-+ [Babel](#Babel)
-+ [Webpack](#Webpack)
-+ [Istanbul](#Istanbul)
-+ [Mocha](#Mocha)
-+ [Backstop](#Backstop)
-+ [Enzyme](#Enzyme)
-+ [Sinon](#Sinon)
-+ [Coveralls](#Coveralls)
++ [React](#react)
++ [Babel](#babel)
++ [Webpack](#webpack)
++ [Istanbul](#istanbul)
++ [Mocha](#mocha)
++ [Backstop](#backstop)
++ [Enzyme](#enzyme)
++ [Sinon](#sinon)
++ [Coveralls](#coveralls)
 
 
 Everyone loves to start new projects.  This repo is a blank, new project just for you! 
+
 
 Getting Started
 ----
