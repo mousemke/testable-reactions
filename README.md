@@ -17,19 +17,26 @@ this project includes:
 + [Coveralls](#coveralls)
 
 
-Everyone loves to start new projects.  This repo is a blank, new project just for you! 
-
+Everyone loves to start new projects.  This repo is a blank, new project just for you!
 
 Getting Started
 ----
 
+dev work is intended for node `6.2.2`+ and npm `3.9.3`+.
+
+
 To initialize the project
 
++ `git clone https://github.com/styladev/testable-reactions.git`
++ `cd testable-reactions` to go into the project folder
 + `npm i`
 + in `backstop.json` change project name
 + in `package.json` change package, name, and author
 + `variables.js` should be changed in any way you deem necessary
 + `npm run test:visual:baseline`
+
+The entry point on your new app is `./app/index.js`, which is called by `./index.html`.  Once built, the project is run from `./dist/`
+
 
 Scripts
 ----
@@ -39,7 +46,7 @@ Scripts, standardized across repos, makes it easier for people to jump from one 
 available scripts:
 
 | `script` | description |
------------|------------
+|----------|-------------|
 | `npm run build` | builds the dist files |
 | `npm run serve` | starts the dev server on whatever port is defined in `./variables` |
 | `npm test` | runs unit and visual tests |
@@ -61,6 +68,24 @@ This project adheres to the [Contributor Covenant](http://contributor-covenant.o
 [Testable-Reactions - Code of Conduct](https://github.com/styladev/testable-reactions/blob/master/CODE_OF_CONDUCT.md)
 
 
+Issues
+----
+
+[Please report issues here.](https://github.com/styladev/testablereactions/issues)
+
++ add any specific information that can help to reproduce and resolve the bug.
+    + What did you do, when the bug appeared.
+    + Node, NPM, + version number
+    + OS, Browser + version, resolution
++ Add a label to the issue, if possible.
+    + critical -> needs fix right away (like broken build, blocks development)
+    + bug -> needs fix
+    + issue -> small bug, does not affect anything (small bug in UI, design issue)
+    + feature -> feature request
+    + question -> needs discussion
+    + docs -> needs documentation
+    + help wanted -> need help with implementation or fixing bug
+
 
 Included package details
 ---
@@ -78,7 +103,7 @@ React is a JavaScript library for building user interfaces.
 Babel transforms your JavaScript
 
 ES2015 and beyond
-Babel has support for the latest version of JavaScript through syntax transformers. These plugins allow you to use new syntax, right now without waiting for browser support. 
+Babel has support for the latest version of JavaScript through syntax transformers. These plugins allow you to use new syntax, right now without waiting for browser support.
 
 [https://babeljs.io/](https://babeljs.io/)
 
