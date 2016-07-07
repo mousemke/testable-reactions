@@ -59,7 +59,8 @@ export default class App extends Component
     render()
     {
         return (
-            <div class="js-test-div">
+            <div className="js-test-div">
+                probably delete me
             </div>
         );
     }

@@ -12,10 +12,11 @@
     "test:unit": "node_modules/.bin/babel-node node_modules/.bin/_mocha ./test/test.js -R nyan -r ignore-styles -r mock-local-storage -r ./test/test-setup",
     "test:unit:coverage": "npm run test:unit:coverage:cli && open coverage/lcov-report/index.html",
     "test:unit:coverage:cli": "node_modules/.bin/babel-node node_modules/.bin/babel-istanbul cover _mocha -- -R spec -r ignore-styles -r mock-local-storage -r ./test/test-setup",
-    "test:visual": "npm run test:visual:cli && npm run openReport",
+    "test:visual": "npm run test:visual:cli && npm run test:visual:report",
     "test:visual:baseline": "cd node_modules/backstopjs/ && npm run reference",
     "test:visual:clean": "cd node_modules/backstopjs/ && rm -rf bitmaps_test",
-    "test:visual:cli": "npm run test:visual:clean && cd node_modules/backstopjs/ && npm test"
+    "test:visual:cli": "npm run test:visual:clean && cd node_modules/backstopjs/ && npm test",
+    "test:visual:report": "cd node_modules/backstopjs/ && npm run openReport"
   },
   "author": "",
   "license": "MIT",

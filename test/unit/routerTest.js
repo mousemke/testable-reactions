@@ -21,6 +21,14 @@ describe( 'getCurrentRoute', () =>
     {
         let route = getCurrentRoute( 'edit/things/stuff' );
 
-        assert.equal( route[0], 'magazine' );
+        assert.equal( route[0], 'home' );
+    } );
+
+
+    it( 'should use window.location if nothing is passed to it', () =>
+    {
+        let route = getCurrentRoute();
+
+        assert.equal( route[0], 'home' );
     } );
 } );

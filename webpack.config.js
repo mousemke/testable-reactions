@@ -1,7 +1,7 @@
 
 const path                  = require( 'path' );
 const webpack               = require( 'webpack' );
-const version               = require( './app/version ')
+const version               = require( './app/version')
 const WebpackShellPlugin    = require( 'webpack-shell-plugin' );
 const LessPluginCleanCSS    = require( 'less-plugin-clean-css' );
 const variables             = require( './variables' );
@@ -85,7 +85,7 @@ module.exports = {
 
     lessLoader: {
         lessPlugins: [
-          new LessPluginCleanCSS({advanced: true, keepSpecialComments: 0})
+          new LessPluginCleanCSS( { advanced: true, keepSpecialComments: 0 } )
         ]
     }
 };

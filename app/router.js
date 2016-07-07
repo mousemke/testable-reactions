@@ -1,6 +1,6 @@
 
 const routes = [
-    // [ /^editor\/dashboard\/stories/   , 'dashboard' , 'published-stories' ], // example route
+    [ /^editor\/dashboard\/stories/   , 'dashboard' , 'published-stories' ], // example route
 ];
 
 
@@ -25,5 +25,5 @@ export function getCurrentRoute( path )
         }
     }
 
-    return [ '' ];
+    return [ 'home' ];
 }
