@@ -60,7 +60,7 @@ export default class App extends Component
     {
         return (
             <div className="js-test-div">
-                probably delete me
+                Hello Patata!!
             </div>
         );
     }

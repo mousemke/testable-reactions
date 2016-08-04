@@ -30,7 +30,7 @@ To initialize the project
 + `git clone https://github.com/styladev/testable-reactions.git`
 + `cd testable-reactions` to go into the project folder
 + `npm i`
-+ in `backstop.json` change project name
++ in `backstop.json` change testSuiteName
 + in `package.json` change package, name, and author
 + `variables.js` should be changed in any way you deem necessary
 + `npm run test:visual:baseline`
