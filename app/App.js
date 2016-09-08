@@ -1,3 +1,4 @@
+/* globals window */
 import './App.less';
 
 import React, { Component } from 'react';
@@ -19,7 +20,7 @@ export default class App extends Component
      *
      * sets the inital state, binds functions, and sets the version
      *
-     * @return _Void_
+     * @return {Void} void
      */
     constructor()
     {
@@ -29,9 +30,11 @@ export default class App extends Component
         this.onRouteChange      = this.onRouteChange.bind( this );
 
 
-        window.addEventListener( 'hashchange', this.onRouteChange.bind( this ) );
+        window.addEventListener( 'hashchange', this.onRouteChange );
 
-        Object.defineProperty( this, 'version', { value : version } );
+        Object.defineProperty( this, 'version', {
+            value : version
+        } );
     }
 
 
@@ -40,11 +43,13 @@ export default class App extends Component
      *
      * sets the route in the state. linked to 'hashchange'
      *
-     * @return _Void_
+     * @return {Void} void
      */
     onRouteChange()
     {
-        this.setState( { route : this.getCurrentRoute() } );
+        this.setState( {
+            route : this.getCurrentRoute()
+        } );
     }
 
 
@@ -54,7 +59,7 @@ export default class App extends Component
      * renders the app.  contains the logic for what to show,
      * depending on whether or not you're logged in
      *
-     * @return _JSX_
+     * @return {JSX} compiled jsx
      */
     render()
     {
@@ -67,4 +72,6 @@ export default class App extends Component
 }
 
 
-Object.defineProperty( App, 'version', { value : version } );
+Object.defineProperty( App, 'version', {
+    value : version
+} );

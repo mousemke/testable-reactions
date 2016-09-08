@@ -1,4 +1,4 @@
 
-import versionTests     from './unit/versionTest';
-import appTests         from './unit/appTest';
-import routerTests      from './unit/routerTest';
+import './unit/versionTest';
+import './unit/appTest';
+import './unit/routerTest';
