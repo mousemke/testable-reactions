@@ -15,6 +15,7 @@ this project includes:
 + [Enzyme](#enzyme)
 + [Sinon](#sinon)
 + [Coveralls](#coveralls)
++ [eslint](#eslint)
 
 
 Everyone loves to start new projects.  This repo is a blank, new project just for you!
@@ -49,6 +50,8 @@ available scripts:
 |----------|-------------|
 | `npm run build` | builds the dist files |
 | `npm run serve` | starts the dev server on whatever port is defined in `./variables` |
+| `npm run lint` | checks the files for js and code style error |
+| `npm run lintFix` | checks the files for js and code style error and fixes them if able |
 | `npm test` | runs unit and visual tests |
 | `npm run test:unit` | runs a quick unit test |
 | `npm run test:unit:coverage` | runs a unit test that determines test coverage and opens the report in a browser |

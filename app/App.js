@@ -31,7 +31,9 @@ export default class App extends Component
 
         window.addEventListener( 'hashchange', this.onRouteChange.bind( this ) );
 
-        Object.defineProperty( this, 'version', { value : version } );
+        Object.defineProperty( this, 'version', {
+            value : version
+        } );
     }
 
 
@@ -44,7 +46,9 @@ export default class App extends Component
      */
     onRouteChange()
     {
-        this.setState( { route : this.getCurrentRoute() } );
+        this.setState( {
+            route : this.getCurrentRoute()
+        } );
     }
 
 
@@ -67,4 +71,6 @@ export default class App extends Component
 }
 
 
-Object.defineProperty( App, 'version', { value : version } );
+Object.defineProperty( App, 'version', {
+    value : version
+} );
