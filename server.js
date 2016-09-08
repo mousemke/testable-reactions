@@ -1,22 +1,23 @@
-
+/* global require, console */
 const webpack           = require( 'webpack' );
 const WebpackDevServer  = require( 'webpack-dev-server' );
 const config            = require( './webpack.config' );
 const variables         = require( './variables' );
 const port              = variables.DEV_SERVER_PORT;
 
-new WebpackDevServer( webpack( config ), 
-{
-    publicPath          : config.output.publicPath,
-    hot                 : true,
-    historyApiFallback  : true
+new WebpackDevServer( webpack( config ),
+    {
+        publicPath          : config.output.publicPath,
+        hot                 : true,
+        historyApiFallback  : true
 
-} ).listen( port, 'localhost', function( err, result ) 
-{
-        if ( err ) 
+    } ).listen( port, 'localhost', err =>
+    {
+        if ( err )
         {
-            return console.log( err );
+            return console.error( err );
         }
 
-        console.log( `Listening at http://localhost:${port}/` );
-} );
+        console.warn( `Listening at http://localhost:${port}/` );
+    }
+);
