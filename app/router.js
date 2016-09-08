@@ -1,6 +1,6 @@
-
+/* globals window */
 const routes = [
-    [ /^editor\/dashboard\/stories/, 'dashboard', 'published-stories' ] // example route
+    [ /^editor\/dashboard\/stories/, 'dashboard', 'published-stories' ]
 ];
 
 
@@ -11,11 +11,11 @@ const routes = [
  *
  * @param {String} path manual override for the hash.  mostly for testing
  *
- * @return _Array_ route
+ * @return {Array} route
  */
 export function getCurrentRoute( path )
 {
-    path = path || window.location.hash.substring( 1 );
+    path = path || window.location.hash.substring( 1 );
 
     for ( const route of routes )
     {

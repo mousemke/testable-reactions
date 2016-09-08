@@ -162,3 +162,17 @@ No dependencies, works with any unit testing framework.
 Coveralls works with your CI server and sifts through your coverage data to find issues you didn’t even know you had before they become a problem.
 
 [https://coveralls.io/](https://coveralls.io/)
+
+# eslint
+
+ESLint is an open source project originally created by Nicholas C. Zakas in June 2013. Its goal is to provide a pluggable linting utility for JavaScript.
+
+[http://eslint.org/](http://eslint.org/)
+
+
+## change log
+--------
+
+# 0.0.2
+
++ eslint added

@@ -1,3 +1,4 @@
+/* globals document */
 import 'promise-polyfill';
 import React    from 'react';
 import ReactDOM from 'react-dom';

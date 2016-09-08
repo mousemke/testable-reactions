@@ -1,12 +1,10 @@
-
+/* globals describe, it */
 import assert           from 'assert';
 import React            from 'react';
-import ReactDOM         from 'react-dom';
-import ReactTestUtils   from 'react-addons-test-utils';
 import App              from '/App';
 
-import sinon                                from 'sinon';
-import enzyme, { shallow, mount, render }   from 'enzyme';
+import sinon            from 'sinon';
+import { shallow }      from 'enzyme';
 
 const app     = shallow( <App /> );
 

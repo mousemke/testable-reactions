@@ -1,4 +1,4 @@
-
+/* globals describe, it */
 import assert           from 'assert';
 import App              from '/App';
 import _package         from '../../package.json';
