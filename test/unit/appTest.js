@@ -3,34 +3,30 @@ import assert           from 'assert';
 import React            from 'react';
 import App              from '/components/App.jsx';
 
-// import sinon            from 'sinon';
-import { shallow }      from 'enzyme';
+import sinon            from 'sinon';
+import { shallow, mount }      from 'enzyme';
 
 
 describe( 'The App component', () =>
 {
-    it( 'should show the initial test div', () =>
+    it( 'should show the initial div', () =>
     {
         const app     = shallow( <App /> );
 
         assert.equal( app.is( '.AppWrapper' ), true );
-        assert.equal( app.text(), 'This app seems to be working!<Player />' );
+        assert.equal( app.text(), 'This app seems to be working!' );
     } );
 
 
-    // this is left in as an example of sinon
-    //
-    // it( 'should run componentDidMount', () =>
-    // {
-    //     sinon.stub( App.prototype, 'revealComponent', () =>
-    //     {
-    //         console.log( 'test!' );
-    //     } );
+    it( 'should mount it\'s children', () =>
+    {
+        sinon.stub( React, 'cloneElement', () =>
+        {
+        } );
 
-    //     const app           = shallow( <App /> );
-    //     const appInstance   = app.instance();
+        const app           = mount( <App children={ [ '' ] }/> );
 
-    //     assert.equal( appInstance.revealComponent.callCount, 1 );
-    //     App.prototype.revealComponent.retore();
-    // } );
+        assert.equal( React.cloneElement.callCount, 1 );
+        React.cloneElement.restore();
+    } );
 } );

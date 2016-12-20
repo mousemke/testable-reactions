@@ -28,7 +28,7 @@ class App extends Component
     /**
      * ## render
      *
-     * renders the App. contains a fish.
+     * renders the App. contains a sometimes fish.
      *
      * @return {JSX} compiled jsx
      */
@@ -52,5 +52,9 @@ class App extends Component
 
 
 App.version = version;
+
+App.propTypes = {
+    children    : React.PropTypes.object
+};
 
 export default App;
