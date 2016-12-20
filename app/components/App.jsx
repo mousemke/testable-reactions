@@ -1,15 +1,15 @@
+import React, { Component } from 'react';
+import version              from '/version';
+
 import './App.css';
 
-
-import React, { Component } from 'react';
-import Fish                 from '/components/fish/Fish.jsx';
 
 /**
  * ## App
  *
  * app wrapper around the site
  */
-export default class App extends Component
+class App extends Component
 {
     /**
      * ## constructor
@@ -20,7 +20,8 @@ export default class App extends Component
     {
         super();
 
-        this.state = {};
+        this.version    = version;
+        this.state      = {};
     }
 
 
@@ -34,12 +35,22 @@ export default class App extends Component
     render()
     {
         return (
-            <div className="AppWrapper">
+            <div ref="appWrapper" className="AppWrapper">
                 <header>
                     This app seems to be working!
                 </header>
-                <Fish />
+                {
+                    React.Children.map( this.props.children, child =>
+                    {
+                        return React.cloneElement( child, this.state );
+                    } )
+                }
             </div>
         );
     }
 }
+
+
+App.version = version;
+
+export default App;

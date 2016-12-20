@@ -1,41 +1,36 @@
 /* globals describe, it */
 import assert           from 'assert';
 import React            from 'react';
-import App              from '/App';
+import App              from '/components/App.jsx';
 
-import sinon            from 'sinon';
+// import sinon            from 'sinon';
 import { shallow }      from 'enzyme';
 
-const app     = shallow( <App /> );
 
 describe( 'The App component', () =>
 {
     it( 'should show the initial test div', () =>
     {
-        assert.equal( app.is( '.js-test-div' ), true );
-        assert.equal( app.text(), 'Hello Patata!!' );
+        const app     = shallow( <App /> );
+
+        assert.equal( app.is( '.AppWrapper' ), true );
+        assert.equal( app.text(), 'This app seems to be working!<Player />' );
     } );
-} );
 
 
+    // this is left in as an example of sinon
+    //
+    // it( 'should run componentDidMount', () =>
+    // {
+    //     sinon.stub( App.prototype, 'revealComponent', () =>
+    //     {
+    //         console.log( 'test!' );
+    //     } );
 
-describe( 'onRouteChange', () =>
-{
-    it( 'should set the route state to the current route', () =>
-    {
-        const appInstance = app.instance();
+    //     const app           = shallow( <App /> );
+    //     const appInstance   = app.instance();
 
-        sinon.stub( appInstance, 'getCurrentRoute',  () =>
-        {
-            return 'test';
-        } );
-
-        appInstance.onRouteChange();
-        appInstance.getCurrentRoute.restore();
-
-
-        const state = app.state();
-
-        assert.equal( state.route, 'test' );
-    } );
+    //     assert.equal( appInstance.revealComponent.callCount, 1 );
+    //     App.prototype.revealComponent.retore();
+    // } );
 } );

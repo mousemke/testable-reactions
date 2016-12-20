@@ -6,7 +6,9 @@ body
 
 .AppWrapper
 {
-    height:                     100vh;
+    height:                 100vh;
+    opacity:                1;
+    transition:             opacity ease-in 150ms;
 }
 
 
@@ -58,4 +60,10 @@ body
     width:                  0.2em;
     border-radius:          0.1em;
     box-shadow:             0.15em -0.7em 0.05em 0.02em #2c2c2c, -0.1em -1.2em 0.05em 0.06em #2c2c2c;
+}
+
+
+.hidden
+{
+    opacity:                0;
 }

@@ -9,7 +9,7 @@ import './Fish.css';
  *
  * contains a fish
  */
-export default class Player extends Component
+export default class Fish extends Component
 {
     /**
      * ## render
