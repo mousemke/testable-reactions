@@ -1,41 +1,32 @@
 /* globals describe, it */
 import assert           from 'assert';
 import React            from 'react';
-import App              from '/App';
+import App              from '/components/App.jsx';
 
 import sinon            from 'sinon';
-import { shallow }      from 'enzyme';
+import { shallow, mount }      from 'enzyme';
 
-const app     = shallow( <App /> );
 
 describe( 'The App component', () =>
 {
-    it( 'should show the initial test div', () =>
+    it( 'should show the initial div', () =>
     {
-        assert.equal( app.is( '.js-test-div' ), true );
-        assert.equal( app.text(), 'Hello Patata!!' );
+        const app     = shallow( <App /> );
+
+        assert.equal( app.is( '.AppWrapper' ), true );
+        assert.equal( app.text(), 'This app seems to be working!' );
     } );
-} );
 
 
-
-describe( 'onRouteChange', () =>
-{
-    it( 'should set the route state to the current route', () =>
+    it( 'should mount it\'s children', () =>
     {
-        const appInstance = app.instance();
-
-        sinon.stub( appInstance, 'getCurrentRoute',  () =>
+        sinon.stub( React, 'cloneElement', () =>
         {
-            return 'test';
         } );
 
-        appInstance.onRouteChange();
-        appInstance.getCurrentRoute.restore();
+        const app           = mount( <App children={ [ '' ] }/> );
 
-
-        const state = app.state();
-
-        assert.equal( state.route, 'test' );
+        assert.equal( React.cloneElement.callCount, 1 );
+        React.cloneElement.restore();
     } );
 } );

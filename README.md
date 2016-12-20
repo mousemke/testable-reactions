@@ -1,7 +1,7 @@
 The grass is always greener
 =======
 
-Styla new project boilerplate
+Styla new project boilerplate 0.0.3
 ----
 
 this project includes:
@@ -16,6 +16,7 @@ this project includes:
 + [Sinon](#sinon)
 + [Coveralls](#coveralls)
 + [eslint](#eslint)
++ [StyleLint](#stylelint)
 
 
 Everyone loves to start new projects.  This repo is a blank, new project just for you!
@@ -33,10 +34,9 @@ To initialize the project
 + `npm i`
 + in `backstop.json` change testSuiteName
 + in `package.json` change package, name, and author
-+ `variables.js` should be changed in any way you deem necessary
 + `npm run test:visual:baseline`
 
-The entry point on your new app is `./app/index.js`, which is called by `./index.html`.  Once built, the project is run from `./dist/`
+The entry point on your new app is `./app/main.js`, which is called by `./index.html`.  Once built, the project is run from `./dist/`
 
 
 Scripts
@@ -50,8 +50,9 @@ available scripts:
 |----------|-------------|
 | `npm run build` | builds the dist files |
 | `npm run serve` | starts the dev server on whatever port is defined in `./variables` |
-| `npm run lint` | checks the files for js and code style error |
-| `npm run lintFix` | checks the files for js and code style error and fixes them if able |
+| `npm run lint` | checks the js and jsx files for js and code style error |
+| `npm run lintFix` | checks the js and jsx files for js and code style error and fixes them if able |
+| `npm run stylelint` | checks the css files for style errors |
 | `npm test` | runs unit and visual tests |
 | `npm run test:unit` | runs a quick unit test |
 | `npm run test:unit:coverage` | runs a unit test that determines test coverage and opens the report in a browser |
@@ -170,8 +171,22 @@ ESLint is an open source project originally created by Nicholas C. Zakas in June
 [http://eslint.org/](http://eslint.org/)
 
 
+# StyleLint
+
+A mighty, modern CSS linter that helps you enforce consistent conventions and avoid errors in your stylesheets.
+
+[http://stylelint.io/](http://stylelint.io/)
+
+
+
 ## change log
 --------
+
+# 0.0.3
+
++ updated structure
++ added a fish
+
 
 # 0.0.2
 
