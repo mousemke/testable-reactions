@@ -1,4 +1,4 @@
 
-import './unit/versionTest';
 import './unit/appTest';
-import './unit/routerTest';
+import './unit/versionTest';
+import './unit/fishTest';

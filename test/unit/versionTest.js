@@ -1,10 +1,10 @@
 /* globals describe, it */
 import assert           from 'assert';
-import App              from '/App';
+import App              from '/components/App.jsx';
 import _package         from '../../package.json';
 
 
-describe( 'The Back Office', () =>
+describe( 'The app', () =>
 {
     it( 'should have the same version as the package.json', () =>
     {
