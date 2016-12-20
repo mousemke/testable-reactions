@@ -12,19 +12,19 @@ const PROD      = process.env.PRODUCTION || false;
 module.exports = {
 
     resolve : {
-        fallback    : path.join(__dirname, 'src'),
+        fallback    : path.join( __dirname, 'src' ),
         alias       : {
-            config      : path.join(__dirname, `config/${ PROD ? 'live' : 'local' }.json`),
+            config      : path.join( __dirname, `config/${ PROD ? 'live' : 'local' }.json` ),
         },
     },
 
 
     entry   : PROD ? {
-        index  : './app/index'
+        index  : './app/main.jsx'
     } : {
         server      : `webpack-dev-server/client?http://localhost:${variables.DEV_SERVER_PORT}`,
         hot         : 'webpack/hot/only-dev-server',
-        index  : './app/index'
+        index  : './app/main.jsx'
     },
 
 
@@ -66,6 +66,11 @@ module.exports = {
     module  : {
         loaders : [
             {
+                test    : /\.css$/,
+                exclude : /node_modules/,
+                loader  : 'style!css!'
+            },
+            {
                 test: /\.json$/,
                 include: path.join(__dirname),
                 loader: 'json',
@@ -76,9 +81,9 @@ module.exports = {
                 include: path.join( __dirname, 'app' )
             },
             {
-                test    : /\.less$/,
-                exclude : /node_modules/,
-                loader  : 'style!css!less!'
+                test: /\.js|jsx$/,
+                loaders: PROD ? ['babel'] : ['react-hot', 'babel'],
+                include: path.join( __dirname, 'app' )
             }
         ]
     },
