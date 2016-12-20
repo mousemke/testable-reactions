@@ -3,7 +3,6 @@ const path                  = require( 'path' );
 const webpack               = require( 'webpack' );
 const version               = require( './app/version')
 const WebpackShellPlugin    = require( 'webpack-shell-plugin' );
-const LessPluginCleanCSS    = require( 'less-plugin-clean-css' );
 const variables             = require( './variables' );
 
 const PROD      = process.env.PRODUCTION || false;
@@ -85,12 +84,6 @@ module.exports = {
                 loaders: PROD ? ['babel'] : ['react-hot', 'babel'],
                 include: path.join( __dirname, 'app' )
             }
-        ]
-    },
-
-    lessLoader: {
-        lessPlugins: [
-          new LessPluginCleanCSS( { advanced: true, keepSpecialComments: 0 } )
         ]
     }
 };

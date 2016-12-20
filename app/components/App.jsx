@@ -35,6 +35,9 @@ export default class App extends Component
     {
         return (
             <div className="AppWrapper">
+                <header>
+                    This app seems to be working!
+                </header>
                 <Fish />
             </div>
         );
