@@ -1,7 +1,7 @@
 
 const path                  = require( 'path' );
 const webpack               = require( 'webpack' );
-const version               = require( './app/version')
+const version               = require( './src/version')
 const WebpackShellPlugin    = require( 'webpack-shell-plugin' );
 const LessPluginCleanCSS    = require( 'less-plugin-clean-css' );
 const variables             = require( './variables' );
@@ -20,11 +20,11 @@ module.exports = {
 
 
     entry   : PROD ? {
-        index  : './app/index'
+        index  : './src/index'
     } : {
         server      : `webpack-dev-server/client?http://localhost:${variables.DEV_SERVER_PORT}`,
         hot         : 'webpack/hot/only-dev-server',
-        index  : './app/index'
+        index  : './src/index'
     },
 
 
@@ -73,7 +73,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 loaders: PROD ? ['babel'] : ['react-hot', 'babel'],
-                include: path.join( __dirname, 'app' )
+                include: path.join( __dirname, 'src' )
             },
             {
                 test    : /\.less$/,

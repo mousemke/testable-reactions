@@ -35,8 +35,18 @@ To initialize the project
 + `variables.js` should be changed in any way you deem necessary
 + `npm run test:visual:baseline`
 
-The entry point on your new app is `./app/index.js`, which is called by `./index.html`.  Once built, the project is run from `./dist/`
+The entry point on your new app is `./src/index.js`, which is called by `./index.html`.
 
+Folder Structure Convention
+----
+
+`src`: main source code. Don't use `app`, even though that is comnon for React apps. `src` works for backend services and even Java projects!
+
+`dist`: final generated files for production usage (`target` folder for Java projects).
+
+`test`: all tests, with subfolders for `unit`, `api` or other folders for different types of tests
+
+`docker`: anything related to docker.
 
 Scripts
 ----

@@ -2,7 +2,7 @@
   "name": "testable-reactions",
   "version": "0.0.1",
   "description": "A fully testable react project boilerplate",
-  "main": "app/index.js",
+  "main": "src/index.js",
   "scripts": {
 
     "build": "mkdir -p dist; cp ./index.html ./dist/index.html && ./node_modules/.bin/webpack",
