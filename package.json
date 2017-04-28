@@ -7,7 +7,7 @@
     "build": "npm run copyAssets && ./node_modules/.bin/webpack",
     "copyAssets": "mkdir -p dist; cp ./index.html ./dist/index.html",
     "postinstall": "npm run build",
-    "serve": "npm run copyAssets && NODE_ENV=dev webpack-dev-server --devtool eval --progress --colors --hot --content-base dist --port 6664 --history-api-fallback",
+    "serve": "npm run copyAssets && NODE_ENV=dev webpack-dev-server --devtool eval --progress --colors --hot --content-base dist --port 4080 --host 0.0.0.0 --history-api-fallback",
     "lint": "eslint ./src ./test --ext .jsx --ext .js",
     "lintFix": "eslint ./src ./test --ext .jsx --ext .js --fix",
     "stylelint": "node_modules/.bin/stylelint './src/**/*.css'",

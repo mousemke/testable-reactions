@@ -1,9 +1,0 @@
-version: '2'
-services:
-  testable-reactions:
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile
-    image: 887764602994.dkr.ecr.us-east-1.amazonaws.com/testable-reactions:latest
-    ports:
-      - 6664:6664

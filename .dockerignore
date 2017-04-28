@@ -1,0 +1,6 @@
+# Thes files will not be sent to the docker daemon and thus not copied to
+# the image when building. Beware, when mounting this directory into the container, even
+# these ignored files will be mapped into the container!
+# https://docs.docker.com/engine/reference/builder/#dockerignore-file
+.git
+node_modules

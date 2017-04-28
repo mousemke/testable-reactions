@@ -1,7 +1,7 @@
 The grass is always greener
 =======
 
-Styla new project boilerplate 0.0.3
+Styla Javascript Frontend Project Boilerplate
 ----
 
 this project includes:
@@ -9,6 +9,7 @@ this project includes:
 + [React](#react)
 + [Babel](#babel)
 + [Webpack](#webpack)
++ [Docker](#docker)
 + [Istanbul](#istanbul)
 + [Mocha](#mocha)
 + [Backstop](#backstop)
@@ -19,22 +20,27 @@ this project includes:
 + [StyleLint](#stylelint)
 
 
-Everyone loves to start new projects.  This repo is a blank, new project just for you!
+Everyone loves to start new projects. This repo is a blank, new frontend project just for you! It's an agglomartion of Styla best practises for how to setup and organize a project. You don't have to use it in your projects in this way, but it is recommended - it makes easier for developer onboarding
 
 Getting Started
 ----
 
-dev work is intended for node `6.2.2`+ and npm `3.9.3`+.
+Prerequisites: Install Docker and git. You might also want to install node.js, but this not stricly needed.
+For Mac: Install [Docker for Mac (Stable Channel](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac) Don't install the older `docker-machine`.
+For Linux: Install [Docker Engine Community Edition](https://docs.docker.com/engine/installation/). You'll also need to separately install [docker-compose](https://docs.docker.com/compose/install/)
 
-
-To initialize the project
+To run it:
 
 + `git clone https://github.com/styladev/testable-reactions.git`
 + `cd testable-reactions` to go into the project folder
-+ `npm i`
++ `docker-compose up --build` to build and run it
+
+The "app" is available then at http://localhost:4080
+
+To use it as a template for your projects:
+
 + in `backstop.json` change testSuiteName
 + in `package.json` change package, name, and author
-+ `npm run test:visual:baseline`
 
 The entry point on your new app is `./src/index.js`, which is called by `./index.html`.
 
@@ -47,7 +53,7 @@ Folder Structure Convention
 
 `test`: all tests, with subfolders for `unit`, `api` or other folders for different types of tests
 
-`docker`: anything related to docker.
+`docker`: anything related to docker. We used to have `docker-compose.yml` also in this folder, but it has moved to the root folder, as this is how `docker-compose` works more elegantly. 
 
 Scripts
 ----
@@ -128,6 +134,26 @@ Packs CommonJs/AMD modules for the browser. Allows to split your codebase into m
 
 [https://webpack.github.io/](https://webpack.github.io/)
 
+# Docker
+
+A lightweight containerization tools. Main benefits to use it: Total freedom to choose whatever compiler/interpreter version you want, No need to install dependencies on dev machine, Same code in dev and production, Easy orchestration of multiple microservices.
+
+[Docker Intro](https://docs.docker.com/get-started/)
+
+## Docker Ports
+
+When mapping ports from container to host in the `docker-compose.yml` file like this
+
+```
+    ports:
+      - 4080:4080
+```
+the host port (first number) needs to be choosen wisely. It needs to be unique for all services running on one host, and since we run services on clusters, there can be a multitude of services. Only ports in the range from 4000 to 9999 are allowed due to Security Groups. Convention should be:
+
+4xxx: general services not assigned to any one team
+5xxx, 6xxx: services managed by `nyan`
+7xxx, 8xxx: services managed by `doge`
+9xxx: services managed by `patata`
 
 # Istanbul
 

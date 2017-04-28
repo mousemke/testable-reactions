@@ -1,6 +1,0 @@
-version: '2'
-services:
-  testable-reactions:
-    image: 887764602994.dkr.ecr.us-east-1.amazonaws.com/testable-reations:latest
-      cpu_shares: 32        # default value - this is a relative value
-      mem_limit: 512m       # default value - cannot allocate more than this amount
