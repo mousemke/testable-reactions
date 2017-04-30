@@ -20,7 +20,7 @@ this project includes:
 + [StyleLint](#stylelint)
 
 
-Everyone loves to start new projects. This repo is a blank, new frontend project just for you! It's an agglomartion of Styla best practises for how to setup and organize a project. You don't have to use it in your projects in this way, but it is recommended - it makes easier for developer onboarding
+Everyone loves to start new projects. This repo is a blank, new frontend project just for you! It's an agglomartion of Styla best practises for how to setup and organize a project. You don't have to use it in your projects in this way, but it is recommended - it makes easier for developer onboarding.
 
 Getting Started
 ----
@@ -35,7 +35,7 @@ To run it:
 + `cd testable-reactions` to go into the project folder
 + `docker-compose up --build` to build and run it
 
-The "app" is available then at http://localhost:4080
+The "app" is then available at http://localhost:4080
 
 To use it as a template for your projects:
 
@@ -55,29 +55,31 @@ Folder Structure Convention
 
 `docker`: anything related to docker. We used to have `docker-compose.yml` also in this folder, but it has moved to the root folder, as this is how `docker-compose` works more elegantly. 
 
-Scripts
+Scripts convention
 ----
 
-Scripts, standardized across repos, makes it easier for people to jump from one project to another.
+Scripts, standardized across repos
 
 available scripts:
 
 | `script` | description |
 |----------|-------------|
-| `npm run build` | builds the dist files |
-| `npm run serve` | starts the dev server on whatever port is defined in `./variables` |
-| `npm run lint` | checks the js and jsx files for js and code style error |
-| `npm run lintFix` | checks the js and jsx files for js and code style error and fixes them if able |
-| `npm run stylelint` | checks the css files for style errors |
-| `npm test` | runs unit and visual tests |
-| `npm run test:unit` | runs a quick unit test |
-| `npm run test:unit:coverage` | runs a unit test that determines test coverage and opens the report in a browser |
-| `npm run test:unit:coverage:cli` | runs a unit test that determines test coverage and reports in the command line |
-| `npm run test:visual` | runs visual regression tests and opens the report in a browser |
-| `npm run test:visual:baseline` | generates baseline comparison images |
-| `npm run test:visual:clean` | removes old visual test images |
-| `npm run test:visual:cli` | runs visual regression tests and reports in the command line |
-| `npm run test:visual:report` | opens the visual regression test report in the browser |
+| `build` | builds the dist files |
+| `serve` | starts the dev server on whatever port is defined in `./variables` |
+| `test` | runs unit and visual tests |
+| `test:unit` | runs a quick unit test |
+| `test:unit:coverage` | runs a unit test that determines test coverage and reports in the command line |
+| `test:visual` | runs visual regression tests and opens the report in a browser |
+| `test:visual:baseline` | generates baseline comparison images |
+| `test:visual:clean` | removes old visual test images |
+| `test:visual:cli` | runs visual regression tests and reports in the command line |
+| `test:visual:report` | opens the visual regression test report in the browser |
+| `lint` | checks the js and jsx files for js and code style error |
+| `lintFix` | checks the js and jsx files for js and code style error and fixes them if able |
+| `stylelint` | checks the css files for style errors |
+
+to run them from docker, when a the docker container is already running: 
+Either login to container with `docker-compose exec testable-reations bash` and the run scripts from within container with `npm run --silent <script>` or run any script directly via `docker-compose exec testable-reactions npm run --silent <script>`.
 
 
 Contributing

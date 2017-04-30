@@ -1,23 +1,23 @@
-config/local.json
-*.sublime-workspace
-*.sublime-project
-.DS_Store
+# git ignore files
+# https://git-scm.com/docs/gitignore 
+
+# filesystem
 .AppleDouble
-.LSOverride
-Icon
-._*
+.DS_Store
 .Spotlight-V100
 .Trashes
-Thumbs.db
-ehthumbs.db
 Desktop.ini
+Thumbs.db
 $RECYCLE.BIN/
-backstop_data/
 
+# editors
+.idea
+.project
+*.sublime-*
+
+# project
 node_modules/
-.tmp
 npm-debug.log
-
 dist/**
 coverage/
 backstop_data/

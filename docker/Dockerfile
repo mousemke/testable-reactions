@@ -16,6 +16,8 @@ WORKDIR /opt/app
 # Best practise - first copy file to install dependencies and install dependencies
 # to make best use of caching
 COPY package.json ./
+
+# TODO this takes a lot of time, evaluate to use images with pre-installed packages
 RUN npm install
 
 # projcet src files are added in second step.
