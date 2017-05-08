@@ -5,7 +5,7 @@
     ],
     "plugins": [
         ["babel-root-slash-import", {
-            "rootPathSuffix": "app"
+            "rootPathSuffix": "src"
         }],
         ["babel-plugin-webpack-alias", {
             "config": "./webpack.config.js"
