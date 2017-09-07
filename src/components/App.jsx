@@ -37,7 +37,7 @@ class App extends Component
         return (
             <div ref="appWrapper" className="AppWrapper">
                 <header>
-                    This app seems to be working!
+                    This app seems to be working! Or is it ....
                 </header>
                 {
                     React.Children.map( this.props.children, child =>
