@@ -1,29 +1,26 @@
-
+// @flow
 import React, { Component } from 'react';
 
 import './Fish.css';
-
 
 /**
  * ## Fish
  *
  * contains a fish
  */
-export default class Fish extends Component
-{
-    /**
+export default class Fish extends Component<void> {
+  /**
      * ## render
      *
      * renders the fish
      *
      * @return {JSX} compiled jsx
      */
-    render()
-    {
-        return (
-            <div ref="fishWrapper" className="fishWrapper">
-                <div ref="fish" className="fish"></div>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div ref={el => (this.fishWrapper = el)} className="fishWrapper">
+        <div ref={el => (this.fish = el)} className="fish" />
+      </div>
+    );
+  }
 }

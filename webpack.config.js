@@ -1,7 +1,6 @@
 
 const path                  = require( 'path' );
 const webpack               = require( 'webpack' );
-const version               = require( './src/version')
 const WebpackShellPlugin    = require( 'webpack-shell-plugin' );
 const variables             = require( './variables' );
 
@@ -52,12 +51,9 @@ module.exports = {
                 drop_console: true
             }
         } ),
-        new webpack.optimize.CommonsChunkPlugin( 'index', `index.${version}.js` ),
-        new WebpackShellPlugin({
-            onBuildEnd: [`sed -i -- 's/index\.js/index.${version}.js/' dist/index.html`]
-        })
+        new webpack.optimize.CommonsChunkPlugin( 'index', `index.js` ),
     ] : [
-        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin( 'index', 'index.js' )
     ],
 
@@ -76,12 +72,14 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                loaders: PROD ? ['babel'] : ['react-hot', 'babel'],
+                loaders: PROD ? ['babel'] : ['babel'],
+                // loaders: PROD ? ['babel'] : ['react-hot', 'babel'],
                 include: path.join( __dirname, 'src' )
             },
             {
                 test: /\.js|jsx$/,
-                loaders: PROD ? ['babel'] : ['react-hot', 'babel'],
+                loaders: PROD ? ['babel'] : ['babel'],
+                // loaders: PROD ? ['babel'] : ['react-hot', 'babel'],
                 include: path.join( __dirname, 'src' )
             }
         ]

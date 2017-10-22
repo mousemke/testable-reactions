@@ -1,17 +1,12 @@
-/* globals document */
-import React            from 'react';
-import ReactDom         from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+// @flow
+/* global document */
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import App              from './components/App.jsx';
-import Fish             from '/components/fish/Fish.jsx';
+import App from './components/App.jsx';
 
-ReactDom.render(
-    <Router history={ browserHistory }>
-        <Route component={ App }>
-            <Route path="/"                         component={ Fish } />
-            <Route path="*"                         component={ () =>
-                                                <div>404 - No Route</div> } />
-        </Route>
-    </Router>, document.getElementById( 'app' )
-);
+const rootApp = document.getElementById('app');
+
+if (rootApp instanceof HTMLDivElement) {
+  ReactDOM.render(<App />, rootApp);
+}

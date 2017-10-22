@@ -1,60 +1,47 @@
+// @flow
 import React, { Component } from 'react';
-import version              from '/version';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Pageheader from './pageHeader/PageHeader.jsx';
+import Fish from './fish/Fish.jsx';
 
 import './App.css';
 
+type Props = {
+  name?: string,
+};
 
 /**
  * ## App
  *
  * app wrapper around the site
  */
-class App extends Component
-{
-    /**
-     * ## constructor
-     *
-     * @return {Void} void
-     */
-    constructor()
-    {
-        super();
+class App extends Component<Props> {
+  static defaultProps = {
+    name: 'anonymous',
+  };
 
-        this.version    = version;
-        this.state      = {};
-    }
-
-
-    /**
+  /**
      * ## render
      *
      * renders the App. contains a sometimes fish.
      *
      * @return {JSX} compiled jsx
      */
-    render()
-    {
-        return (
-            <div ref="appWrapper" className="AppWrapper">
-                <header>
-                    This app seems to be working! Or is it ....
-                </header>
-                {
-                    React.Children.map( this.props.children, child =>
-                    {
-                        return React.cloneElement( child, this.state );
-                    } )
-                }
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div ref={el => (this.appWrapper = el)} className="AppWrapper">
+        <BrowserRouter>
+          <div>
+            <Pageheader name={this.props.name} />
+            <Switch>
+              <Route path="/" exact component={Fish} />
+              <Route path="*" component={() => <div>404 - No Route</div>} />
+            </Switch>
+          </div>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
-
-
-App.version = version;
-
-App.propTypes = {
-    children    : React.PropTypes.object
-};
 
 export default App;
