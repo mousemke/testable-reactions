@@ -8,14 +8,17 @@ import './Fish.css';
  *
  * contains a fish
  */
-export default class Fish extends Component<void> {
+export default class Fish extends Component<any> {
+  fish: ?HTMLDivElement;
+  fishWrapper: ?HTMLDivElement;
+
   /**
-     * ## render
-     *
-     * renders the fish
-     *
-     * @return {JSX} compiled jsx
-     */
+   * ## render
+   *
+   * renders the fish
+   *
+   * @return {JSX} compiled jsx
+   */
   render() {
     return (
       <div ref={el => (this.fishWrapper = el)} className="fishWrapper">
