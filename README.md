@@ -18,6 +18,8 @@ this project includes:
 + [Coveralls](#coveralls)
 + [eslint](#eslint)
 + [StyleLint](#stylelint)
++ [Flow](#flow)
++ [Prettier](#prettier)
 
 
 Everyone loves to start new projects. This repo is a blank, new frontend project just for you! It's an agglomartion of Styla best practises for how to setup and organize a project. You don't have to use it in your projects in this way, but it is recommended - it makes easier for developer onboarding.
@@ -53,7 +55,7 @@ Folder Structure Convention
 
 `test`: all tests, with subfolders for `unit`, `api` or other folders for different types of tests
 
-`docker`: anything related to docker. We used to have `docker-compose.yml` also in this folder, but it has moved to the root folder, as this is how `docker-compose` works more elegantly. 
+`docker`: anything related to docker. We used to have `docker-compose.yml` also in this folder, but it has moved to the root folder, as this is how `docker-compose` works more elegantly.
 
 Scripts convention
 ----
@@ -65,20 +67,25 @@ available scripts:
 | `script` | description |
 |----------|-------------|
 | `build` | builds the dist files |
+| `prettier` | runs prettier |
 | `serve` | starts the dev server on whatever port is defined in `./variables` |
+| `start` | starts the dev server on whatever port is defined in `./variables` |
 | `test` | runs unit and visual tests |
+| `test:lint` | checks the js and jsx files for js and code style error |
+| `test:lint:fix` | checks the js and jsx files for js and code style error and fixes them if able |
+| `test:style` | checks the css files for style errors |
+| `test:style:fix` | checks the css files for style errors and fixes them if able |
+| `test:type` | runs flow to test the typing |
 | `test:unit` | runs a quick unit test |
-| `test:unit:coverage` | runs a unit test that determines test coverage and reports in the command line |
+| `test:unit:coverage` | runs a unit test that determines test coverage and reports in the browser |
+| `test:unit:coverage:cli` | runs a unit test that determines test coverage and reports in the command line |
 | `test:visual` | runs visual regression tests and opens the report in a browser |
 | `test:visual:baseline` | generates baseline comparison images |
 | `test:visual:clean` | removes old visual test images |
 | `test:visual:cli` | runs visual regression tests and reports in the command line |
 | `test:visual:report` | opens the visual regression test report in the browser |
-| `lint` | checks the js and jsx files for js and code style error |
-| `lintFix` | checks the js and jsx files for js and code style error and fixes them if able |
-| `stylelint` | checks the css files for style errors |
 
-to run them from docker, when a the docker container is already running: 
+to run them from docker, when a the docker container is already running:
 Either login to container with `docker-compose exec testable-reations bash` and the run scripts from within container with `npm run --silent <script>` or run any script directly via `docker-compose exec testable-reactions npm run --silent <script>`.
 
 
@@ -216,9 +223,29 @@ A mighty, modern CSS linter that helps you enforce consistent conventions and av
 [http://stylelint.io/](http://stylelint.io/)
 
 
+# Flow
+
+Flow is a static type checker for your JavaScript code. It does a lot of work to make you more productive. Making you code faster, smarter, more confidently, and to a bigger scale.
+
+[https://flow.org](https://flow.org)
+
+
+# Prettier
+
+Prettier is an opinionated code formatter.
+
+[https://prettier.io/](https://prettier.io/)
+
 
 ## change log
 --------
+
+# 0.1.3
+
++ updated most dependencies
++ added prettier
++ added flow
++ added precommit tests
 
 # 0.0.3
 
