@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Pageheader from './pageHeader/PageHeader.jsx';
 import Fish from './fish/Fish.jsx';
+import FourOhFour from './fourOhFour/FourOhFour.jsx';
 
 import './App.css';
 
@@ -29,13 +30,13 @@ class App extends Component<Props> {
      */
   render() {
     return (
-      <div ref={el => (this.appWrapper = el)} className="AppWrapper">
+      <div className="AppWrapper">
         <BrowserRouter>
           <div>
             <Pageheader name={this.props.name} />
             <Switch>
               <Route path="/" exact component={Fish} />
-              <Route path="*" component={() => <div>404 - No Route</div>} />
+              <Route path="*" component={FourOhFour} />
             </Switch>
           </div>
         </BrowserRouter>
