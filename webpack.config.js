@@ -1,85 +1,66 @@
+const path = require('path');
+const webpack = require( 'webpack' );
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const variables = require( './variables' );
 
-const path                  = require( 'path' );
-const webpack               = require( 'webpack' );
-const WebpackShellPlugin    = require( 'webpack-shell-plugin' );
-const variables             = require( './variables' );
-
-const PROD      = process.env.PRODUCTION || false;
+const PROD = process.env.PRODUCTION || false;
 
 /* istanbul ignore next */
 module.exports = {
-
-    resolve : {
-        fallback    : path.join( __dirname, 'src' ),
-        alias       : {
-            config      : path.join( __dirname, `config/${ PROD ? 'live' : 'local' }.json` ),
-        },
-    },
-
-
     entry   : PROD ? {
-        index  : './src/main.jsx'
+        index : './src/main.jsx'
     } : {
-        server      : `webpack-dev-server/client?http://localhost:${variables.DEV_SERVER_PORT}`,
-        hot         : 'webpack/hot/only-dev-server',
-        index  : './src/main.jsx'
+        index : './src/main.jsx'
     },
-
 
     output  : {
-        path        : path.join( __dirname, 'dist' ),
-        filename    : 'tests.js',
-        publicPath  : '/'
+        path : path.join( __dirname, 'dist' ),
+        filename : 'bundle.js',
+        publicPath : '/'
     },
 
+    devtool: 'inline-source-map',
 
-    node    : {
-        fs          : 'empty',
-        console     : false,
-        global      : true,
-        process     : true,
-        Buffer      : false,
-        setImmediate: false
+    devServer: {
+        contentBase: './dist',
+        hot: true
     },
 
-
-    plugins : PROD ? [
-        new webpack.optimize.UglifyJsPlugin( {
-            minimize    : true,
-            compress    : {
-                warnings    : false,
-                drop_console: true
-            }
-        } ),
-        new webpack.optimize.CommonsChunkPlugin( 'index', `index.js` ),
-    ] : [
-        // new webpack.HotModuleReplacementPlugin(),
-        new webpack.optimize.CommonsChunkPlugin( 'index', 'index.js' )
+    plugins: [
+        new CleanWebpackPlugin(['dist']),
+        new HtmlWebpackPlugin({
+            title: 'Hot Module Replacement'
+        }),
+        // new webpack.NamedModulesPlugin(),
     ],
 
-
-    module  : {
-        loaders : [
+    module: {
+        rules: [
             {
                 test    : /\.css$/,
                 exclude : /node_modules/,
-                loader  : 'style!css!'
+                use : [
+                    'style-loader',
+                    'css-loader'
+                ]
             },
+
             {
                 test: /\.json$/,
                 include: path.join(__dirname),
-                loader: 'json',
+                loader: 'json-loader',
+            },
+             {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
             },
             {
-                test: /\.js$/,
-                loaders: PROD ? ['babel'] : ['babel'],
-                // loaders: PROD ? ['babel'] : ['react-hot', 'babel'],
-                include: path.join( __dirname, 'src' )
-            },
-            {
-                test: /\.js|jsx$/,
-                loaders: PROD ? ['babel'] : ['babel'],
-                // loaders: PROD ? ['babel'] : ['react-hot', 'babel'],
+                test: /\.js(x)?$/,
+                use: PROD ? ['babel-loader'] : ['babel-loader'],
+                // use: PROD ? ['babel'] : ['react-hot', 'babel'],
                 include: path.join( __dirname, 'src' )
             }
         ]

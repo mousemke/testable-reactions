@@ -5,8 +5,12 @@ import ReactDOM from 'react-dom';
 
 import App from './components/App.jsx';
 
-const rootApp = document.getElementById('app');
+const rootApp = document.createElement('div');
+rootApp.id = 'app;';
+const body = document.body;
 
-if (rootApp instanceof HTMLDivElement) {
+if (body) {
+  body.appendChild(rootApp);
+
   ReactDOM.render(<App />, rootApp);
 }
