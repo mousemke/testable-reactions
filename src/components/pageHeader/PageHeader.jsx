@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 
-import './PageHeader.css';
+import styles from './PageHeader.css';
 
 type Props = {
   name: string,
@@ -28,7 +28,7 @@ class Pageheader extends Component<Props> {
      */
   render() {
     return (
-      <div className="page-header__wrapper">
+      <div className={styles.pageHeaderWrapper}>
         Hello {this.props.name}, This app seems to be working! Or is it ....
       </div>
     );

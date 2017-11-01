@@ -5,7 +5,7 @@ import Pageheader from './pageHeader/PageHeader.jsx';
 import Fish from './fish/Fish.jsx';
 import FourOhFour from './fourOhFour/FourOhFour.jsx';
 
-import './App.css';
+import styles from './App.css';
 
 type Props = {
   name?: string,
@@ -30,7 +30,7 @@ class App extends Component<Props> {
      */
   render() {
     return (
-      <div className="AppWrapper">
+      <div className={styles.AppWrapper}>
         <BrowserRouter>
           <div>
             <Pageheader name={this.props.name} />

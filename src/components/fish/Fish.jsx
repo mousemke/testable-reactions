@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 
-import './Fish.css';
+import styles from './Fish.css';
 
 /**
  * ## Fish
@@ -21,8 +21,8 @@ export default class Fish extends Component<any> {
    */
   render() {
     return (
-      <div ref={el => (this.fishWrapper = el)} className="fishWrapper">
-        <div ref={el => (this.fish = el)} className="fish" />
+      <div ref={el => (this.fishWrapper = el)} className={styles.fishWrapper}>
+        <div ref={el => (this.fish = el)} className={styles.fish} />
       </div>
     );
   }
