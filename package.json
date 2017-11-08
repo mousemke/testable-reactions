@@ -12,8 +12,10 @@
     "precommit": "npm run prettier && git add . && npm run test:lint:fix && npm run test:style:fix && npm run test:unit && npm run test:type",
     "prettier": "prettier --parser flow --single-quote --trailing-comma es5 --write \"src/**/*.jsx\" \"src/**/*.js\" \"test/**/*.js\"",
     "serve": "NODE_ENV=dev webpack-dev-server --devtool eval --progress --colors --hot --content-base dist --port 4080 --host 0.0.0.0 --history-api-fallback",
+    "serve:niffy": "echo server used to compare niffy baseline to the current dev",
+    "serve:niffy:debug": "SHOW=true npm run serve:niffy",
     "start": "npm run serve",
-    "test": "npm run test:lint && npm run test:style && npm run test:visual:cli && npm run test:unit:coverage",
+    "test": "npm run test:lint && npm run test:style && npm run test:visual && npm run test:unit:coverage",
     "test:lint": "eslint ./src ./test --ext .jsx --ext .js",
     "test:lint:fix": "eslint ./src ./test --ext .jsx --ext .js --fix",
     "test:style": "node_modules/.bin/stylelint './src/**/*.css'",
@@ -23,11 +25,9 @@
     "test:unit:coverage": "npm run test:unit:coverage:cli && npm run test:unit:coverage:report",
     "test:unit:coverage:cli": "NODE_ENV=development babel-node node_modules/.bin/babel-istanbul cover _mocha -- \"test/unit/**/*.spec.js\" -R spec -r ignore-styles -r ./test/unit/test-setup",
     "test:unit:coverage:report": "open coverage/lcov-report/index.html",
-    "test:visual": "npm run test:visual:cli && npm run test:visual:report",
-    "test:visual:baseline": "cd node_modules/backstopjs/ && npm run reference",
-    "test:visual:clean": "cd node_modules/backstopjs/ && rm -rf bitmaps_test",
-    "test:visual:cli": "npm run test:visual:clean && cd node_modules/backstopjs/ && npm test",
-    "test:visual:report": "cd node_modules/backstopjs/ && npm run openReport"
+    "test:visual": "echo still deciding niffy config",
+    "test:visual:debug": "echo still deciding niffy config",
+    "test:visual:report": "echo still deciding niffy config"
   },
   "license": "MIT",
   "devDependencies": {
@@ -43,7 +43,6 @@
     "babel-preset-stage-3": "6.24.1",
     "babel-register": "6.26.0",
     "babel-runtime": "6.26.0",
-    "backstopjs": "3.0.31",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
     "clean-webpack-plugin": "0.1.17",
     "co-mocha": "1.2.1",
@@ -69,11 +68,12 @@
     "mocha": "4.0.1",
     "mocha-istanbul": "0.3.0",
     "mocha-jsdom": "1.1.0",
-    "niffy": "0.2.0",
+    "niffy": "git://github.com/mousemke/niffy.git#master",
     "nightmare": "2.10.0",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
+    "pre-push": "0.1.1",
     "prettier": "1.7.4",
     "promise": "8.0.1",
     "promise-polyfill": "6.0.2",
@@ -81,6 +81,7 @@
     "react": "16.0.0",
     "react-dev-utils": "4.2.1",
     "react-dom": "16.0.0",
+    "react-hot-loader": "3.1.1",
     "react-router-dom": "4.2.2",
     "sinon": "4.0.1",
     "style-loader": "0.19.0",
@@ -93,7 +94,11 @@
     "webpack-dev-server": "2.9.3",
     "whatwg-fetch": "2.0.3"
   },
-  "dependencies": {
-    "react-hot-loader": "3.1.1"
-  }
+  "prepush": [
+    "test:lint:fix",
+    "test:style:fix",
+    "test:unit",
+    "test:type",
+    "test:visual"
+  ]
 }
