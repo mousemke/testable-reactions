@@ -12,7 +12,7 @@ this project includes:
 + [Docker](#docker)
 + [Istanbul](#istanbul)
 + [Mocha](#mocha)
-+ [Backstop](#backstop)
++ [Niffy](#niffy)
 + [Enzyme](#enzyme)
 + [Sinon](#sinon)
 + [Coveralls](#coveralls)
@@ -41,7 +41,6 @@ The "app" is then available at http://localhost:4080
 
 To use it as a template for your projects:
 
-+ in `backstop.json` change testSuiteName
 + in `package.json` change package, name, and author
 
 The entry point on your new app is `./src/index.js`, which is called by `./index.html`.
@@ -68,9 +67,8 @@ available scripts:
 |----------|-------------|
 | `build` | builds the dist files |
 | `prettier` | runs prettier |
-| `serve` | starts the dev server on whatever port is defined in `./variables` |
 | `start` | starts the dev server on whatever port is defined in `./variables` |
-| `test` | runs unit and visual tests |
+| `test` | runs all tests |
 | `test:lint` | checks the js and jsx files for js and code style error |
 | `test:lint:fix` | checks the js and jsx files for js and code style error and fixes them if able |
 | `test:style` | checks the css files for style errors |
@@ -79,11 +77,11 @@ available scripts:
 | `test:unit` | runs a quick unit test |
 | `test:unit:coverage` | runs a unit test that determines test coverage and reports in the browser |
 | `test:unit:coverage:cli` | runs a unit test that determines test coverage and reports in the command line |
-| `test:visual` | runs visual regression tests and opens the report in a browser |
-| `test:visual:baseline` | generates baseline comparison images |
-| `test:visual:clean` | removes old visual test images |
-| `test:visual:cli` | runs visual regression tests and reports in the command line |
-| `test:visual:report` | opens the visual regression test report in the browser |
+| `test:visual` | runs visual regression tests |
+| `test:visual:debug` | runs visual regression tests with visual and console debug output |
+| `test:visual:baseline` | **builds the project** and copies the files to be served on test time |
+| `test:visual:clean` | removes old visual test images and the baseline. then generates a new baseline|
+| `test:visual:cli` | runs visual regression tests |
 
 to run them from docker, when a the docker container is already running:
 Either login to container with `docker-compose exec testable-reations bash` and the run scripts from within container with `npm run --silent <script>` or run any script directly via `docker-compose exec testable-reactions npm run --silent <script>`.
@@ -178,11 +176,11 @@ Mocha is a feature-rich JavaScript test framework running on Node.js and in the 
 [http://mochajs.org/](http://mochajs.org/)
 
 
-# Backstop
+# Niffy
 
-BackstopJS automates CSS regression testing of your responsive web UI by comparing DOM screenshots at various viewport sizes.
+Perceptual diffing suite built on [Nightmare](http://www.nightmarejs.org/)
 
-[http://backstopjs.org/](http://backstopjs.org/)
+[https://github.com/mousemke/niffy](https://github.com/mousemke/niffy)
 
 
 # Enzyme
@@ -239,6 +237,13 @@ Prettier is an opinionated code formatter.
 
 ## change log
 --------
+
+# 0.1.4
+
++ added niffy
++ visual tests pass
++ added niffy server
++ added prepush
 
 # 0.1.3
 
