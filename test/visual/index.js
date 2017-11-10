@@ -1,41 +1,75 @@
 import Niffy from 'niffy';
 import { exec } from 'child_process';
 import path from 'path';
+import isPortAvailable from 'is-port-available';
+import variables from '../../variables';
 import niffyTargets from './niffyTargets';
 
-function startBaselineServer() {
-  const baseline = exec('npm run serve:niffy');
+const {
+  DEV_SERVER_HOST,
+  DEV_SERVER_PORT,
+  NIFFY_SERVER_HOST,
+  NIFFY_SERVER_PORT,
+} = variables;
 
-  baseline.stdout.on('data', data => {
-    console.warn(`stdout: ${data}`);
-  });
-
-  baseline.stderr.on('data', data => {
-    console.warn(`stderr: ${data}`);
-  });
-
-  baseline.on('close', (code, signal) => {
-    if (code) {
-      console.warn(`child process exited with code ${code}`);
-    } else {
-      console.warn(`child process exited with signal ${signal}`);
-    }
-  });
-
-  return baseline;
-}
+const servers = {};
 
 const SHOW = process.env.SHOW;
-const baselineServer = startBaselineServer();
+const DEBUG = process.env.DEBUG;
+
+console.warn('\n');
+
+function startServer(serverCommand, port, name) {
+  let server;
+
+  isPortAvailable(port).then(status => {
+    if (status) {
+      server = exec(serverCommand);
+      console.warn(`${name} server started`);
+
+      if (DEBUG) {
+        server.stdout.on('data', data => {
+          console.warn(`stdout: ${data}`);
+        });
+
+        server.stderr.on('data', data => {
+          console.warn(`stderr: ${data}`);
+        });
+      }
+
+      server.on('close', (code, signal) => {
+        if (code) {
+          console.warn(`${name} server exited with code ${code}`);
+        } else {
+          console.warn(`${name} server exited with signal ${signal}`);
+        }
+      });
+
+      servers[name] = server;
+    } else {
+      console.error(
+        `port ${port} is not available. ${name} server already started?`
+      );
+      servers[name] = null;
+    }
+  });
+}
+
+startServer(
+  `http-server ./niffy/.baseline/ -p ${NIFFY_SERVER_PORT} -a ${NIFFY_SERVER_HOST} -s --push-state`,
+  NIFFY_SERVER_PORT,
+  'baseline'
+);
+startServer('npm start', DEV_SERVER_PORT, 'dev');
 
 let waitForBaseline = true;
 
-describe('testable reactions', () => {
+describe('\ntestable reactions', () => {
   new Niffy(
-    'http://localhost:6061',
-    'http://localhost:6060',
+    `http://${NIFFY_SERVER_HOST}:${NIFFY_SERVER_PORT}`,
+    `http://${DEV_SERVER_HOST}:${DEV_SERVER_PORT}`,
     {
-      pngPath: path.resolve(process.cwd(), './niffy'),
+      pngPath: path.resolve(process.cwd(), './niffy/tests'),
       targets: niffyTargets,
       show: !!SHOW,
     },
@@ -46,7 +80,7 @@ describe('testable reactions', () => {
         if (waitForBaseline) {
           before(function*() {
             waitForBaseline = false;
-            yield niffy.wait(5000); // wait for the localhost to spin up
+            yield niffy.wait(7000); // wait for the localhost to spin up
           });
         }
 
@@ -55,7 +89,7 @@ describe('testable reactions', () => {
         });
 
         it('404', function*() {
-          yield niffy.test('/jadsz');
+          yield niffy.test('/badUrl');
         });
       });
 
@@ -66,7 +100,16 @@ describe('testable reactions', () => {
   );
 
   after(() => {
-    console.warn('Closing baseline');
-    baselineServer.kill();
+    const { baseline, dev } = servers;
+
+    if (baseline) {
+      console.warn('killing baseline server');
+      baseline.kill();
+    }
+
+    if (dev) {
+      console.warn('killing dev server');
+      dev.kill();
+    }
   });
 });

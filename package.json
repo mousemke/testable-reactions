@@ -3,17 +3,18 @@
   "description": "A fully testable react/webpack project boilerplate",
   "private": true,
   "main": "src/index.js",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "engines": {
     "node": ">=7.3.0"
   },
   "scripts": {
     "build": "./node_modules/.bin/webpack",
-    "precommit": "npm run prettier && git add . && npm run test:lint:fix && npm run test:style:fix && npm run test:unit && npm run test:type",
-    "prettier": "prettier --parser flow --single-quote --trailing-comma es5 --write \"src/**/*.jsx\" \"src/**/*.js\" \"test/**/*.js\"",
+    "precommit": "npm run prettier && npm run test:lint:fix && npm run test:style:fix && npm run test:unit && npm run test:type",
+    "prettier": "prettier --parser flow --single-quote --trailing-comma es5 --write \"src/**/*.jsx\" \"src/**/*.js\" \"test/**/*.js\" && git add .",
+    "postinstall": "npm run test:visual:baseline",
     "serve": "NODE_ENV=dev webpack-dev-server --devtool eval --progress --colors --hot --content-base dist --port 4080 --host 0.0.0.0 --history-api-fallback",
     "serve:niffy": "echo server used to compare niffy baseline to the current dev",
-    "serve:niffy:debug": "SHOW=true npm run serve:niffy",
+    "serve:niffy:debug": "SHOW=show npm run serve:niffy",
     "start": "npm run serve",
     "test": "npm run test:lint && npm run test:style && npm run test:visual && npm run test:unit:coverage",
     "test:lint": "eslint ./src ./test --ext .jsx --ext .js",
@@ -25,9 +26,9 @@
     "test:unit:coverage": "npm run test:unit:coverage:cli && npm run test:unit:coverage:report",
     "test:unit:coverage:cli": "NODE_ENV=development babel-node node_modules/.bin/babel-istanbul cover _mocha -- \"test/unit/**/*.spec.js\" -R spec -r ignore-styles -r ./test/unit/test-setup",
     "test:unit:coverage:report": "open coverage/lcov-report/index.html",
-    "test:visual": "echo still deciding niffy config",
-    "test:visual:debug": "echo still deciding niffy config",
-    "test:visual:report": "echo still deciding niffy config"
+    "test:visual": "babel-node node_modules/.bin/_mocha ./test/visual/index.js --slow 10s --timeout 200s --require co-mocha",
+    "test:visual:debug": "DEBUG=nightmare SHOW=show npm run test:visual",
+    "test:visual:baseline": "npm run build && mkdir -p  niffy/.baseline && cp -r ./dist/* ./niffy/.baseline && echo niffy baseline set"
   },
   "license": "MIT",
   "devDependencies": {
@@ -36,7 +37,7 @@
     "babel-core": "6.26.0",
     "babel-eslint": "8.0.1",
     "babel-istanbul": "0.12.2",
-    "babel-loader": "6.2.4",
+    "babel-loader": "7.1.2",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-preset-es2015": "6.24.1",
     "babel-preset-react": "6.24.1",
@@ -62,6 +63,7 @@
     "git-pre-commit": "2.1.3",
     "html-webpack-plugin": "2.30.1",
     "ignore-styles": "5.0.1",
+    "is-port-available": "0.1.4",
     "istanbul-coveralls": "1.0.3",
     "jsdom": "11.3.0",
     "json-loader": "0.5.7",
@@ -71,6 +73,7 @@
     "niffy": "git://github.com/mousemke/niffy.git#master",
     "nightmare": "2.10.0",
     "object-assign": "4.1.1",
+    "postcss": "6.0.14",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
     "pre-push": "0.1.1",
@@ -84,6 +87,7 @@
     "react-hot-loader": "3.1.1",
     "react-router-dom": "4.2.2",
     "sinon": "4.0.1",
+    "spa-http-server": "0.9.0",
     "style-loader": "0.19.0",
     "stylelint": "8.2.0",
     "stylelint-no-browser-hacks": "1.1.0",
@@ -95,8 +99,8 @@
     "whatwg-fetch": "2.0.3"
   },
   "prepush": [
-    "test:lint:fix",
-    "test:style:fix",
+    "test:lint",
+    "test:style",
     "test:unit",
     "test:type",
     "test:visual"
