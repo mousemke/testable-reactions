@@ -20,4 +20,4 @@ node_modules/
 npm-debug.log
 dist/**
 coverage/
-backstop_data/
+niffy/
