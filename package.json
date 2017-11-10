@@ -16,7 +16,7 @@
     "serve:niffy": "echo server used to compare niffy baseline to the current dev",
     "serve:niffy:debug": "SHOW=show npm run serve:niffy",
     "start": "npm run serve",
-    "test": "npm run test:lint && npm run test:style && npm run test:visual && npm run test:unit:coverage",
+    "test": "npm run test:lint && npm run test:style && npm run test:visual && npm run test:unit:coverage && test:visual",
     "test:lint": "eslint ./src ./test --ext .jsx --ext .js",
     "test:lint:fix": "eslint ./src ./test --ext .jsx --ext .js --fix",
     "test:style": "node_modules/.bin/stylelint './src/**/*.css'",
@@ -27,6 +27,7 @@
     "test:unit:coverage:cli": "NODE_ENV=development babel-node node_modules/.bin/babel-istanbul cover _mocha -- \"test/unit/**/*.spec.js\" -R spec -r ignore-styles -r ./test/unit/test-setup",
     "test:unit:coverage:report": "open coverage/lcov-report/index.html",
     "test:visual": "babel-node node_modules/.bin/_mocha ./test/visual/index.js --slow 10s --timeout 200s --require co-mocha",
+    "test:visual:clean": "rm -rf ./niffy && npm run test:visual:baseline",
     "test:visual:debug": "DEBUG=nightmare SHOW=show npm run test:visual",
     "test:visual:baseline": "npm run build && mkdir -p  niffy/.baseline && cp -r ./dist/* ./niffy/.baseline && echo niffy baseline set"
   },
