@@ -238,6 +238,10 @@ Prettier is an opinionated code formatter.
 ## change log
 --------
 
+# 0.1.5
+
++ removed serve niffy script
+
 # 0.1.4
 
 + added niffy

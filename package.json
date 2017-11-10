@@ -3,7 +3,7 @@
   "description": "A fully testable react/webpack project boilerplate",
   "private": true,
   "main": "src/index.js",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "engines": {
     "node": ">=7.3.0"
   },
@@ -13,8 +13,6 @@
     "prettier": "prettier --parser flow --single-quote --trailing-comma es5 --write \"src/**/*.jsx\" \"src/**/*.js\" \"test/**/*.js\" && git add .",
     "postinstall": "npm run test:visual:baseline",
     "serve": "NODE_ENV=dev webpack-dev-server --devtool eval --progress --colors --hot --content-base dist --port 4080 --host 0.0.0.0 --history-api-fallback",
-    "serve:niffy": "echo server used to compare niffy baseline to the current dev",
-    "serve:niffy:debug": "SHOW=show npm run serve:niffy",
     "start": "npm run serve",
     "test": "npm run test:lint && npm run test:style && npm run test:visual && npm run test:unit:coverage && test:visual",
     "test:lint": "eslint ./src ./test --ext .jsx --ext .js",
