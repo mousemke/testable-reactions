@@ -36,6 +36,9 @@ module.exports = {
   plugins: PROD ? [
     new CleanWebpackPlugin(['dist']),
     new UglifyJSPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Where is the fisch?'
+    }),
   ] : [
     new CleanWebpackPlugin(['dist']),
     new CaseSensitivePathsPlugin(),

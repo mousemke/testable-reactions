@@ -8,7 +8,7 @@
     "node": ">=7.3.0"
   },
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
+    "build": "PRODUCTION=true ./node_modules/.bin/webpack",
     "precommit": "npm run prettier && npm run test:lint:fix && npm run test:style:fix && npm run test:unit && npm run test:type",
     "prettier": "prettier --parser flow --single-quote --trailing-comma es5 --write \"src/**/*.jsx\" \"src/**/*.js\" \"test/**/*.js\" && git add .",
     "postinstall": "npm run test:visual:baseline",
