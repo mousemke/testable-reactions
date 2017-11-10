@@ -83,8 +83,10 @@ available scripts:
 | `test:visual:clean` | removes old visual test images and the baseline. then generates a new baseline|
 | `test:visual:cli` | runs visual regression tests |
 
-to run them from docker, when a the docker container is already running:
-Either login to container with `docker-compose exec testable-reations bash` and the run scripts from within container with `npm run --silent <script>` or run any script directly via `docker-compose exec testable-reactions npm run --silent <script>`.
+#### you can run script from the docker container is already running by doing either of these:
++ login to container with `docker-compose exec testable-reations bash` and the run scripts from within container with `npm run --silent <script>`
++ run any script directly via `docker-compose exec deathwatch-fe npm run --silent <script>`.
+
 
 
 Contributing
