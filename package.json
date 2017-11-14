@@ -1,12 +1,14 @@
 {
   "name": "testable-reactions",
   "description": "A fully testable react/webpack project boilerplate",
-  "private": true,
   "main": "src/index.js",
   "version": "0.1.5",
   "engines": {
     "node": ">=7.3.0"
   },
+  "contributors": [
+    "Mouse Braun <mouse@knoblau.ch> (http://knoblau.ch/)"
+  ],
   "scripts": {
     "build": "PRODUCTION=true ./node_modules/.bin/webpack",
     "precommit": "npm run prettier && npm run test:lint:fix && npm run test:style:fix && npm run test:unit && npm run test:type",
