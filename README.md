@@ -20,7 +20,7 @@ this project includes:
 + [StyleLint](#stylelint)
 
 
-Everyone loves to start new projects. This repo is a blank, new frontend project just for you! It's an agglomartion of Styla best practises for how to setup and organize a project. You don't have to use it in your projects in this way, but it is recommended - it makes easier for developer onboarding.
+Everyone loves to start new projects. This repo is a blank, new frontend project just for us! It's an agglomartion of Styla best practises for how to setup and organize a project. You don't have to use it in your projects in this way, but it is recommended - it makes easier for developer onboarding.
 
 Getting Started
 ----
@@ -53,7 +53,7 @@ Folder Structure Convention
 
 `test`: all tests, with subfolders for `unit`, `api` or other folders for different types of tests
 
-`docker`: anything related to docker. We used to have `docker-compose.yml` also in this folder, but it has moved to the root folder, as this is how `docker-compose` works more elegantly. 
+`docker`: anything related to docker. We used to have `docker-compose.yml` also in this folder, but it has moved to the root folder, as this is how `docker-compose` works more elegantly.
 
 Scripts convention
 ----
@@ -78,7 +78,7 @@ available scripts:
 | `lintFix` | checks the js and jsx files for js and code style error and fixes them if able |
 | `stylelint` | checks the css files for style errors |
 
-to run them from docker, when a the docker container is already running: 
+to run them from docker, when a the docker container is already running:
 Either login to container with `docker-compose exec testable-reations bash` and the run scripts from within container with `npm run --silent <script>` or run any script directly via `docker-compose exec testable-reactions npm run --silent <script>`.
 
 
