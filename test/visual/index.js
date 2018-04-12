@@ -1,15 +1,15 @@
-import Niffy from 'niffy';
+import Torment from 'torment';
 import { exec } from 'child_process';
 import path from 'path';
 import isPortAvailable from 'is-port-available';
 import variables from '../../variables';
-import niffyTargets from './niffyTargets';
+import tormentTargets from './tormentTargets';
 
 const {
   DEV_SERVER_HOST,
   DEV_SERVER_PORT,
-  NIFFY_SERVER_HOST,
-  NIFFY_SERVER_PORT,
+  TORMENT_SERVER_HOST,
+  TORMENT_SERVER_PORT,
 } = variables;
 
 const servers = {};
@@ -56,8 +56,8 @@ function startServer(serverCommand, port, name) {
 }
 
 startServer(
-  `http-server ./niffy/.baseline/ -p ${NIFFY_SERVER_PORT} -a ${NIFFY_SERVER_HOST} -s --push-state`,
-  NIFFY_SERVER_PORT,
+  `http-server ./.torment/.baseline/ -p ${TORMENT_SERVER_PORT} -a ${TORMENT_SERVER_HOST} -s --push-state`,
+  TORMENT_SERVER_PORT,
   'baseline'
 );
 startServer('npm start', DEV_SERVER_PORT, 'dev');
@@ -65,36 +65,36 @@ startServer('npm start', DEV_SERVER_PORT, 'dev');
 let waitForBaseline = true;
 
 describe('\ntestable reactions', () => {
-  new Niffy(
-    `http://${NIFFY_SERVER_HOST}:${NIFFY_SERVER_PORT}`,
+  new Torment(
+    `http://${TORMENT_SERVER_HOST}:${TORMENT_SERVER_PORT}`,
     `http://${DEV_SERVER_HOST}:${DEV_SERVER_PORT}`,
     {
-      pngPath: path.resolve(process.cwd(), './niffy/tests'),
-      targets: niffyTargets,
+      pngPath: path.resolve(process.cwd(), './.torment'),
+      targets: tormentTargets,
       show: !!SHOW,
     },
-    (niffy, size) => {
+    (torment, size) => {
       const { label, width, height } = size;
 
       describe(`${label} : ${width} x ${height}`, () => {
         if (waitForBaseline) {
           before(function*() {
             waitForBaseline = false;
-            yield niffy.wait(7000); // wait for the localhost to spin up
+            yield torment.wait(7000); // wait for the localhost to spin up
           });
         }
 
         it('Root', function*() {
-          yield niffy.test('/');
+          yield torment.test('/');
         });
 
         it('404', function*() {
-          yield niffy.test('/badUrl');
+          yield torment.test('/badUrl');
         });
       });
 
       after(function*() {
-        yield niffy.end();
+        yield torment.end();
       });
     }
   );

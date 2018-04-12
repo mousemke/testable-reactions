@@ -1,15 +1,33 @@
 const path = require('path');
 const webpack = require( 'webpack' );
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const FlexbugsFixes = require('postcss-flexbugs-fixes');
 
 const variables = require( './variables' );
 
 const PROD = process.env.PRODUCTION || false;
+
+const postcssLoaderConfig = {
+  loader: 'postcss-loader',
+  options: {
+    ident: 'postcss',
+    plugins: () => [
+      FlexbugsFixes,
+      autoprefixer({
+        browsers: [
+          '>1%',
+          'last 4 versions',
+          'Firefox ESR',
+          'not ie < 9',
+        ],
+        flexbox: 'no-2009',
+      }),
+    ],
+  },
+};
 
 /* istanbul ignore next */
 module.exports = {
@@ -20,9 +38,14 @@ module.exports = {
     ]
   },
 
+  performance: {
+    maxAssetSize: 100000
+  },
+
   output  : {
     path : path.join( __dirname, 'dist' ),
-    filename : 'bundle.js',
+    filename: '[name].[hash:22].js',
+    chunkFilename: '[name].[hash:22].js',
     publicPath : '/'
   },
 
@@ -34,20 +57,32 @@ module.exports = {
   },
 
   plugins: PROD ? [
-    new CleanWebpackPlugin(['dist']),
-    new UglifyJSPlugin(),
+    new ExtractTextPlugin({
+      filename: '[name].css'
+    }),
     new HtmlWebpackPlugin({
       title: 'Where is the fisch?'
     }),
   ] : [
-    new CleanWebpackPlugin(['dist']),
     new CaseSensitivePathsPlugin(),
-    new WatchMissingNodeModulesPlugin('./node_modules/'),
     new HtmlWebpackPlugin({
-      title: 'Where is the fisch?'
-    }),
-    new webpack.NamedModulesPlugin(),
+      title: 'Where is the fisch?',
+    })
   ],
+
+  optimization: PROD ? {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      }
+    }
+  } : {
+    namedModules: true,
+  },
 
   module: {
     rules : [
@@ -55,7 +90,7 @@ module.exports = {
         oneOf: [
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-            loader: require.resolve('url-loader'),
+            loader: 'url-loader',
             options: {
               limit: 10000,
               name: 'static/media/[name].[hash:8].[ext]',
@@ -64,47 +99,41 @@ module.exports = {
           {
             test: /\.(js|jsx)$/,
             include: path.join(__dirname, 'src'),
-            loader: require.resolve('babel-loader'),
+            loader: 'babel-loader',
             options: {
               cacheDirectory: true,
             },
           },
           {
             test: /\.css$/,
-            use: [
-              require.resolve('style-loader'),
-              {
-                loader: require.resolve('css-loader'),
-                options: PROD ? {
-                  importLoaders: 1,
-                  modules: true,
-                  minimize: true,
-                  sourceMap: true,
-                 } : {
-                  importLoaders: 1,
-                  modules: true,
-                  localIdentName: '[name]__[local]___[hash:base64:5]',
-                }
-              },
-              {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-flexbugs-fixes'),
-                    autoprefixer({
-                      browsers: [
-                        '>1%',
-                        'last 4 versions',
-                        'Firefox ESR',
-                        'not ie < 9',
-                      ],
-                      flexbox: 'no-2009',
-                    }),
-                  ],
+            use: PROD ?
+              ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: [
+                  {
+                    loader: 'css-loader',
+                    options: {
+                      importLoaders: 1,
+                      modules: true,
+                      minimize: true,
+                      sourceMap: true,
+                    }
+                  },
+                  postcssLoaderConfig,
+                ]
+              }) :
+              [
+                'style-loader',
+                {
+                  loader: 'css-loader',
+                  options: {
+                    importLoaders: 1,
+                    modules: true,
+                    localIdentName: '[name]__[local]___[hash:base64:5]',
+                  },
                 },
-              },
-            ],
+                postcssLoaderConfig,
+              ],
           },
         ]
       }
