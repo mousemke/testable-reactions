@@ -12,7 +12,7 @@ this project includes:
 + [Docker](#docker)
 + [Istanbul](#istanbul)
 + [Mocha](#mocha)
-+ [Niffy](#niffy)
++ [Torment](#torment)
 + [Enzyme](#enzyme)
 + [Sinon](#sinon)
 + [Coveralls](#coveralls)
@@ -85,7 +85,7 @@ available scripts:
 
 #### you can run script from the docker container is already running by doing either of these:
 + login to container with `docker-compose exec testable-reations bash` and the run scripts from within container with `npm run --silent <script>`
-+ run any script directly via `docker-compose exec deathwatch-fe npm run --silent <script>`.
++ run any script directly via `docker-compose exec testable-reactions npm run --silent <script>`.
 
 
 
@@ -143,11 +143,13 @@ Packs CommonJs/AMD modules for the browser. Allows to split your codebase into m
 
 [https://webpack.github.io/](https://webpack.github.io/)
 
+
 # Docker
 
 A lightweight containerization tools. Main benefits to use it: Total freedom to choose whatever compiler/interpreter version you want, No need to install dependencies on dev machine, Same code in dev and production, Easy orchestration of multiple microservices.
 
 [Docker Intro](https://docs.docker.com/get-started/)
+
 
 ## Docker Ports
 
@@ -157,12 +159,8 @@ When mapping ports from container to host in the `docker-compose.yml` file like 
     ports:
       - 4080:4080
 ```
-the host port (first number) needs to be choosen wisely. It needs to be unique for all services running on one host, and since we run services on clusters, there can be a multitude of services. Only ports in the range from 4000 to 9999 are allowed due to Security Groups. Convention should be:
+the host port (first number) needs to be choosen wisely. It needs to be unique for all services running on one host, and since we run services on clusters, there can be a multitude of services. Only ports in the range from 4000 to 9999 are allowed due to Security Groups.
 
-4xxx: general services not assigned to any one team
-5xxx, 6xxx: services managed by `nyan`
-7xxx, 8xxx: services managed by `doge`
-9xxx: services managed by `patata`
 
 # Istanbul
 
@@ -178,11 +176,11 @@ Mocha is a feature-rich JavaScript test framework running on Node.js and in the 
 [http://mochajs.org/](http://mochajs.org/)
 
 
-# Niffy
+# Torment
 
 Perceptual diffing suite built on [Nightmare](http://www.nightmarejs.org/)
 
-[https://github.com/mousemke/niffy](https://github.com/mousemke/niffy)
+[https://github.com/mousemke/torment](https://github.com/mousemke/torment)
 
 
 # Enzyme
@@ -204,10 +202,10 @@ No dependencies, works with any unit testing framework.
 
 # Coveralls
 
-
 Coveralls works with your CI server and sifts through your coverage data to find issues you didn’t even know you had before they become a problem.
 
 [https://coveralls.io/](https://coveralls.io/)
+
 
 # eslint
 
@@ -239,6 +237,12 @@ Prettier is an opinionated code formatter.
 
 ## change log
 --------
+
+# 0.2.0
+
++ exchanged niffy for torment
++ updated dependencies
++ updated webpack config
 
 # 0.1.5
 

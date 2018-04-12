@@ -20,4 +20,4 @@ node_modules/
 npm-debug.log
 dist/**
 coverage/
-niffy/
+.torment/

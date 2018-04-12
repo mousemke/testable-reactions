@@ -22,12 +22,12 @@ class App extends Component<Props> {
   };
 
   /**
-     * ## render
-     *
-     * renders the App. contains a sometimes fish.
-     *
-     * @return {JSX} compiled jsx
-     */
+   * ## render
+   *
+   * renders the App. contains a sometimes fish.
+   *
+   * @return {JSX} compiled jsx
+   */
   render() {
     return (
       <div className={styles.AppWrapper}>

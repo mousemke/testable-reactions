@@ -20,12 +20,12 @@ class Pageheader extends Component<Props> {
   props: Props;
 
   /**
-     * ## render
-     *
-     * renders the header
-     *
-     * @return {JSX} compiled jsx
-     */
+   * ## render
+   *
+   * renders the header
+   *
+   * @return {JSX} compiled jsx
+   */
   render() {
     return (
       <div className={styles.pageHeaderWrapper}>
