@@ -22,7 +22,7 @@ this project includes:
 + [Prettier](#prettier)
 
 
-Everyone loves to start new projects. This repo is a blank, new frontend project just for you! It's an agglomartion of Styla best practises for how to setup and organize a project. You don't have to use it in your projects in this way, but it is recommended - it makes easier for developer onboarding.
+Everyone loves to start new projects. This repo is a blank, new frontend project just for us! It's an amalgamation of best practises for how to setup and organize a project. You don't have to use it in your projects in this way, but it is recommended - it makes easier for developer onboarding.
 
 Getting Started
 ----
@@ -33,7 +33,7 @@ For Linux: Install [Docker Engine Community Edition](https://docs.docker.com/eng
 
 To run it:
 
-+ `git clone https://github.com/styladev/testable-reactions.git`
++ `git clone https://github.com/mousemke/testable-reactions.git`
 + `cd testable-reactions` to go into the project folder
 + `docker-compose up --build` to build and run it
 
@@ -87,6 +87,8 @@ available scripts:
 + login to container with `docker-compose exec testable-reations bash` and the run scripts from within container with `npm run --silent <script>`
 + run any script directly via `docker-compose exec testable-reactions npm run --silent <script>`.
 
+to run them from docker, when a the docker container is already running:
+Either login to container with `docker-compose exec testable-reations bash` and the run scripts from within container with `npm run --silent <script>` or run any script directly via `docker-compose exec testable-reactions npm run --silent <script>`.
 
 
 Contributing
@@ -94,13 +96,13 @@ Contributing
 
 This project adheres to the [Contributor Covenant](http://contributor-covenant.org/). By participating, you are expected to honor this code.
 
-[Testable-Reactions - Code of Conduct](https://github.com/styladev/testable-reactions/blob/master/CODE_OF_CONDUCT.md)
+[Testable-Reactions - Code of Conduct](https://github.com/mousemke/testable-reactions/blob/master/CODE_OF_CONDUCT.md)
 
 
 Issues
 ----
 
-[Please report issues here.](https://github.com/styladev/testable-reactions/issues)
+[Please report issues here.](https://github.com/mousemke/testable-reactions/issues)
 
 + add any specific information that can help to reproduce and resolve the bug.
     + What did you do, when the bug appeared.
