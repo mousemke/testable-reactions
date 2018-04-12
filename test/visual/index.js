@@ -1,9 +1,15 @@
+// @flow
 import Torment from 'torment';
 import { exec } from 'child_process';
 import path from 'path';
 import isPortAvailable from 'is-port-available';
 import variables from '../../variables';
 import tormentTargets from './tormentTargets';
+
+declare var describe: Function;
+declare var it: Function;
+declare var before: Function;
+declare var after: Function;
 
 const {
   DEV_SERVER_HOST,

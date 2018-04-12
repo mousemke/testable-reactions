@@ -1,3 +1,4 @@
+// @flow
 const tormentTargets = {
   xl: [1205, 600],
   l: [965, 600],

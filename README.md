@@ -1,7 +1,7 @@
 The grass is always greener
 =======
 
-Styla Javascript Frontend Project Boilerplate
+Javascript Frontend Greenfield Boilerplate
 ----
 
 this project includes:
@@ -12,6 +12,7 @@ this project includes:
 + [Docker](#docker)
 + [Istanbul](#istanbul)
 + [Mocha](#mocha)
++ [Nightmare](#nightmare)
 + [Torment](#torment)
 + [Enzyme](#enzyme)
 + [Sinon](#sinon)
@@ -52,7 +53,7 @@ Folder Structure Convention
 
 `dist`: final generated files for production usage (`target` folder for Java projects).
 
-`test`: all tests, with subfolders for `unit`, `api` or other folders for different types of tests
+`test`: all tests, with subfolders for `unit`, `visual` or any other folders for different types of tests
 
 `docker`: anything related to docker. We used to have `docker-compose.yml` also in this folder, but it has moved to the root folder, as this is how `docker-compose` works more elegantly.
 
@@ -178,6 +179,13 @@ Mocha is a feature-rich JavaScript test framework running on Node.js and in the 
 [http://mochajs.org/](http://mochajs.org/)
 
 
+# Nightmare
+
+Nightmare is a high-level browser automation library.
+
+[http://www.nightmarejs.org/](http://www.nightmarejs.org/)
+
+
 # Torment
 
 Perceptual diffing suite built on [Nightmare](http://www.nightmarejs.org/)
@@ -239,6 +247,11 @@ Prettier is an opinionated code formatter.
 
 ## change log
 --------
+
+# 0.2.1
+
++ added nightmare for e2e testing
++ cleaned dependencies
 
 # 0.2.0
 
