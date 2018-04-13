@@ -1,22 +1,49 @@
 // @flow
 import Nightmare from 'nightmare';
+import variables from '../../variables';
+import assert from 'assert';
 
-const nightmare = new Nightmare({ show: true });
+declare var describe: Function;
+declare var it: Function;
+declare var beforeEach: Function;
+declare var afterEach: Function;
 
-nightmare
-  .goto('https://duckduckgo.com')
-  .type('#search_form_input_homepage', 'github nightmare')
-  .click('#search_button_homepage')
-  .wait('#r1-0 a.result__a')
-  .evaluate(() => {
-    const res = document.querySelector('#r1-0 a.result__a');
+const DEBUG = process.env.DEBUG;
+const ENV = process.env.ENV || '';
 
-    if (res) return res;
+const E2E_HOST = variables[`E2E_${ENV}_SERVER_HOST`];
+const E2E_PORT = variables[`E2E_${ENV}_SERVER_PORT`];
+const E2E_PROTOCOL = variables[`E2E_${ENV}_SERVER_PROTOCOL`];
 
-    return null;
-  })
-  .end()
-  .then(console.warn)
-  .catch(error => {
-    console.error('Search failed:', error);
+function getNightmare() {
+  const nightmare = new Nightmare({ show: !!DEBUG });
+
+  if (DEBUG) {
+    nightmare.on('consoleMessage', msg => {
+      console.warn(`remote> ${msg}`);
+    });
+  }
+
+  return nightmare;
+}
+
+describe('testable reactions', () => {
+  let nightmare;
+
+  beforeEach(() => {
+    nightmare = getNightmare();
   });
+
+  afterEach(function*() {
+    yield nightmare.end();
+  });
+
+  it('should check if it finds the 404 page', function*() {
+    const fourOhFour = yield nightmare
+      .goto(`${E2E_PROTOCOL}://${E2E_HOST}:${E2E_PORT}/this-is-not-a-place`)
+      .wait('.testable-reactions')
+      .exists('.fourOhFour');
+
+    assert.ok(fourOhFour);
+  });
+});

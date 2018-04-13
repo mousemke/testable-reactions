@@ -69,7 +69,9 @@ available scripts:
 | `build` | builds the dist files |
 | `prettier` | runs prettier |
 | `start` | starts the dev server on whatever port is defined in `./variables` |
-| `test` | runs all tests |
+| `test` | runs all tests except the e2e tests|
+| `test:e2e` | runs the end-to-end tests |
+| `test:e2e:debug` | runs the end-to-end tests in debug mode |
 | `test:lint` | checks the js and jsx files for js and code style error |
 | `test:lint:fix` | checks the js and jsx files for js and code style error and fixes them if able |
 | `test:style` | checks the css files for style errors |

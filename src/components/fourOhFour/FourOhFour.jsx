@@ -1,6 +1,23 @@
 // @flow
-import React from 'react';
+import React, { Component } from 'react';
 
-const FourOhFour = () => <div className="fourOhFour">404 - No Route</div>;
+/**
+ * ## 404
+ *
+ * if you cant find anything else
+ */
+export default class FourOhFour extends Component<any> {
+  fish: ?HTMLDivElement;
+  fishWrapper: ?HTMLDivElement;
 
-export default FourOhFour;
+  /**
+   * ## render
+   *
+   * renders the 404 page
+   *
+   * @return {JSX} compiled jsx
+   */
+  render() {
+    return <div className="fourOhFour">404 - No Route</div>;
+  }
+}

@@ -30,17 +30,15 @@ class App extends Component<Props> {
    */
   render() {
     return (
-      <div className={styles.AppWrapper}>
-        <BrowserRouter>
-          <div>
-            <Pageheader name={this.props.name} />
-            <Switch>
-              <Route path="/" exact component={Fish} />
-              <Route path="*" component={FourOhFour} />
-            </Switch>
-          </div>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <div className={`testable-reactions ${styles.appWrapper}`}>
+          <Pageheader name={this.props.name} />
+          <Switch>
+            <Route path="/" exact component={Fish} />
+            <Route path="*" component={FourOhFour} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
