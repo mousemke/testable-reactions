@@ -1,4 +1,4 @@
 // @flow
-import { trackFishView } from './fish';
+import { getTime } from './timestamp';
 
-export { trackFishView };
+export { getTime };

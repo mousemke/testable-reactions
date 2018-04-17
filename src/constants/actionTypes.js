@@ -1,6 +1,6 @@
 // @flow
-export const FISH_ACTION_TYPES = {
-  VIEW_FISH: 'VIEW_FISH',
+export const TIMESTAMP_ACTION_TYPES = {
+  GET_TIME: 'GET_TIME',
 };
 
-export default Object.assign({}, FISH_ACTION_TYPES);
+export default Object.assign({}, TIMESTAMP_ACTION_TYPES);
