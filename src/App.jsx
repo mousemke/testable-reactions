@@ -1,10 +1,10 @@
 // @flow
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Pageheader from './pageHeader/PageHeader.jsx';
-import Fish from './fish/Fish.jsx';
-import FourOhFour from './fourOhFour/FourOhFour.jsx';
-
+import Pageheader from './components/pageHeader/PageHeader.jsx';
+import Home from './pages/home/Home.jsx';
+import FourOhFour from './components/fourOhFour/FourOhFour.jsx';
+import Fish from './components/fish/Fish.jsx';
 import styles from './App.css';
 
 type Props = {
@@ -34,9 +34,10 @@ class App extends Component<Props> {
         <div className={`testable-reactions ${styles.appWrapper}`}>
           <Pageheader name={this.props.name} />
           <Switch>
-            <Route path="/" exact component={Fish} />
+            <Route path="/" exact component={Home} />
             <Route path="*" component={FourOhFour} />
           </Switch>
+          <Fish />
         </div>
       </BrowserRouter>
     );

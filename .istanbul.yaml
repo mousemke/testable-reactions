@@ -1,0 +1,16 @@
+instrumentation:
+  extension: .js*
+  root: .
+  dir: ./.coverage
+  include-all-sources: true
+  excludes:
+    - dist/**/*.*
+    - '*.js'
+    - flow-typed
+    - node_modules
+reporting:
+  print: summary
+  reports:
+    - json-summary
+    - html
+  dir: ./.coverage
