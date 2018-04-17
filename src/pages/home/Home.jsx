@@ -1,26 +1,16 @@
 // @flow
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Fish from '../../components/fish/Fish.jsx';
-import fishActions from '../../redux/action-builders/fish';
-// import { bindActionCreators } from 'redux';
+import Timestamp from '../../components/timestamp/Timestamp.jsx';
+import ContentContainer from '../../components/contentContainer/ContentContainer.jsx';
 
-export class HomePage extends React.Component {
+export class HomePage extends Component<any>  {
   render() {
     return (
-      <section>
-        <Fish {...this.props} />
-      </section>
+      <ContentContainer title={'Dashboard'}>
+        <Timestamp {...this.props} text="You arrived at:"/>
+      </ContentContainer>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    timestamp: state.fish.timestamp,
-  };
-}
-
-const mapDispatchToProps = dispatch => fishActions(dispatch).actions;
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default HomePage;

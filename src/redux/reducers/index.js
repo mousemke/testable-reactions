@@ -1,7 +1,7 @@
 // @flow
 import { combineReducers } from 'redux';
-import fish from './fish';
+import timestamp from './timestamp';
 
 export default combineReducers({
-  fish,
+  timestamp,
 });

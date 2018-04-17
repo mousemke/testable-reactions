@@ -1,5 +1,5 @@
 // @flow
-import { trackFishView } from '../actions/fish';
+import { getTime } from '../actions/timestamp';
 
 /* eslint-disable import/no-unresolved */
 import type { Dispatch } from 'testable-reactions-types';
@@ -7,6 +7,6 @@ import type { Dispatch } from 'testable-reactions-types';
 
 export default (dispatch: Dispatch) => ({
   actions: {
-    onFishView: () => dispatch(trackFishView()),
+    onTimestampView: () => dispatch(getTime()),
   },
 });
