@@ -131,8 +131,14 @@ React is a JavaScript library for building user interfaces.
 [https://facebook.github.io/react/](https://facebook.github.io/react/)
 
 
-# Babel
+# Redux
 
+Redux is a predictable state container for JavaScript apps. It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test.
+
+[https://redux.js.org/](https://redux.js.org/)
+
+
+# Babel
 
 Babel transforms your JavaScript
 
@@ -249,6 +255,11 @@ Prettier is an opinionated code formatter.
 
 ## change log
 --------
+
+# 0.3.0
+
++ added redux
++ split into Container and Presenter Components
 
 # 0.2.1
 

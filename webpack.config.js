@@ -34,7 +34,7 @@ module.exports = {
   entry   : {
     index : [
       './src/polyfills',
-      './src/main.jsx'
+      './src/index.jsx'
     ]
   },
 
@@ -53,7 +53,8 @@ module.exports = {
 
   devServer: {
     contentBase: './dist',
-    hot: true
+    hot: true,
+    historyApiFallback: true
   },
 
   plugins: PROD ? [
