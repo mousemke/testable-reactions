@@ -1,4 +1,6 @@
 // @flow
 import { getTime } from './timestamp';
 
-export { getTime };
+export default {
+  getTime,
+};

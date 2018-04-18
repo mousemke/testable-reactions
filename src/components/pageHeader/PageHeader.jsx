@@ -55,6 +55,6 @@ function mapStateToProps(state) {
   return {};
 }
 
-const mapDispatchToProps = dispatch => pageHeaderActions(dispatch).actions;
+const mapDispatchToProps = dispatch => pageHeaderActions(dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pageheader);

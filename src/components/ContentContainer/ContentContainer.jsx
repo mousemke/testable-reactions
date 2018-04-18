@@ -8,8 +8,6 @@ import styles from './ContentContainer.css';
  * central content container
  */
 export default class ContentContainer extends Component<any> {
-  // dropdown: ?HTMLSelectElement;
-
   /**
    * ## render
    *

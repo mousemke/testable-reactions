@@ -11,18 +11,14 @@ import styles from './Timestamp.css';
  * contains a timestamp
  */
 class Timestamp extends Component<any> {
-  static defaultProp = {
+  static defaultProps = {
     text: '',
   };
 
   props: {
     now: number,
-    text: string,
     onTimestampView: Function,
   };
-
-  timestamp: ?HTMLDivElement;
-  timestampWrapper: ?HTMLDivElement;
 
   componentDidMount() {
     this.props.onTimestampView();
@@ -39,14 +35,11 @@ class Timestamp extends Component<any> {
     const { now, text } = this.props;
 
     return (
-      <div
-        ref={el => (this.timestampWrapper = el)}
-        className={styles.timestampWrapper}
-      >
+      <div className={styles.timestampWrapper}>
         <div
           ref={el => (this.timestamp = el)}
           className={styles.timestamp}
-          now={now}
+          data-now={now}
         >
           {`${text} ${now}`}
         </div>
@@ -61,6 +54,6 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = dispatch => timestampActions(dispatch).actions;
+const mapDispatchToProps = dispatch => timestampActions(dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Timestamp);
