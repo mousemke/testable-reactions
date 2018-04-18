@@ -1,7 +1,7 @@
 // @flow
 import assert from 'assert';
 import React from 'react';
-import FourOhFour from '../../src/components/fourOhFour/FourOhFour.jsx';
+import FourOhFour from '../../../src/pages/fourOhFour/FourOhFour.jsx';
 
 import { shallow } from 'enzyme';
 
@@ -10,9 +10,9 @@ declare var it: Function;
 
 describe('The FourOhFour component', () => {
   it('should show the 404 message', () => {
-    const fourOhFour = shallow(<FourOhFour />);
+    const fourOhFour = shallow(<FourOhFour />).dive();
 
-    assert.equal(fourOhFour.is('.fourOhFour'), true);
-    assert.equal(fourOhFour.text(), '404 - No Route');
+    assert.equal(fourOhFour.find('.fourOhFour').length, 1);
+    assert.equal(fourOhFour.text(), 'Oops!404 - No Route');
   });
 });

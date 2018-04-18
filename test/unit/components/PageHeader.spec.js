@@ -1,8 +1,8 @@
 // @flow
 import assert from 'assert';
 import React from 'react';
-import PageHeader from '../../src/components/pageHeader/PageHeader.jsx';
-import styles from '../../src/components/pageHeader/PageHeader.css';
+import PageHeader from '../../../src/components/pageHeader/PageHeader.jsx';
+import styles from '../../../src/components/pageHeader/PageHeader.css';
 
 import { shallow } from 'enzyme';
 
