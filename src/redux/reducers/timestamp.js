@@ -11,7 +11,10 @@ const initialState = {
   now: null,
 };
 
-export default function(state: TimestampState = initialState, action: TimestampAction) {
+export default function(
+  state: TimestampState = initialState,
+  action: TimestampAction
+) {
   switch (action.type) {
     case timestampActions.GET_TIME:
       return getTime(state, action);

@@ -1,7 +1,7 @@
 The grass is always greener
 =======
 
-Javascript Frontend Greenfield Boilerplate
+Javascript Frontend Greenfield Boilerplate (IE10+)
 ----
 
 this project includes:
@@ -10,7 +10,7 @@ this project includes:
 + [Babel](#babel)
 + [Webpack](#webpack)
 + [Docker](#docker)
-+ [Istanbul](#istanbul)
++ [NYC](#nyc)
 + [Mocha](#mocha)
 + [Nightmare](#nightmare)
 + [Torment](#torment)
@@ -173,11 +173,11 @@ When mapping ports from container to host in the `docker-compose.yml` file like 
 the host port (first number) needs to be choosen wisely. It needs to be unique for all services running on one host, and since we run services on clusters, there can be a multitude of services. Only ports in the range from 4000 to 9999 are allowed due to Security Groups.
 
 
-# Istanbul
+# NYC
 
-Yet another JS code coverage tool that computes statement, line, function and branch coverage with module loader hooks to transparently add coverage when running tests. Supports all JS coverage use cases including unit tests, server side functional tests
+NYC instruments your ES5 and ES2015+ JavaScript code with line counters, so that you can track how well your unit-tests exercise your codebase.
 
-[https://www.npmjs.com/package/istanbul](https://www.npmjs.com/package/istanbul)
+[https://www.npmjs.com/package/nyc](https://www.npmjs.com/package/nyc)
 
 
 # Mocha
@@ -259,7 +259,8 @@ Prettier is an opinionated code formatter.
 # 0.3.0
 
 + added redux
-+ split into Container and Presenter Components
++ updated styles
++ replaced istanbul with nyc
 
 # 0.2.1
 

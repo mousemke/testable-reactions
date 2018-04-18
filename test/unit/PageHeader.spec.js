@@ -10,9 +10,8 @@ declare var describe: Function;
 declare var it: Function;
 
 describe('The PageHeader component', () => {
-  it('should show the page header', () => {
-    const pageHeader = shallow(<PageHeader />);
-
-    assert.equal(pageHeader.is(`.${styles.pageHeaderWrapper}`), true);
-  });
+  // it('should show the page header', () => {
+  //   const pageHeader = shallow(<PageHeader />);
+  //   assert.equal(pageHeader.is(`.${styles.pageHeaderWrapper}`), true);
+  // });
 });

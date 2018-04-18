@@ -23,23 +23,20 @@ class Pageheader extends Component<any> {
     name: 'anonymous',
   };
 
-
   /**
-     * ## render
-     *
-     * renders the header with search
-     *
-     * @return {JSX} compiled jsx
-     */
+   * ## render
+   *
+   * renders the header with search
+   *
+   * @return {JSX} compiled jsx
+   */
   render() {
     const { name } = this.props;
 
     return (
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          <div className={styles.loginWrapper}>
-            Hello {name}
-          </div>
+          <div className={styles.loginWrapper}>Hello {name}</div>
           <Link to="/nmm" className={styles.homeButton}>
             Home
           </Link>
@@ -51,20 +48,15 @@ class Pageheader extends Component<any> {
   }
 }
 
-
 function mapStateToProps(state) {
   return {
     // dropdownOptions: state.timestamp.now,
   };
 }
 
-
 const mapDispatchToProps = dispatch => pageHeaderActions(dispatch).actions;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pageheader);
-
-
-
 
 // // @flow
 // import React, { Component } from 'react';
