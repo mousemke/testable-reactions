@@ -6,7 +6,5 @@ import type { Dispatch } from 'testable-reactions-types';
 /* eslint-enable */
 
 export default (dispatch: Dispatch) => ({
-  actions: {
-    // onTimestampView: () => dispatch(getTime()),
-  },
+  // onTimestampView: () => dispatch(getTime()),
 });

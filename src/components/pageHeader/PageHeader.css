@@ -36,11 +36,11 @@
 
 .loginWrapper
 {
-    float:                  right;
-    margin-left:            15px;
     color:                  #777;
+    float:                  right;
     font-size:              18px;
     height:                 30px;
     line-height:            32px;
+    margin-left:            15px;
     margin-right:           15px;
 }

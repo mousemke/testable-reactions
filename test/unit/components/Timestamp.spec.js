@@ -1,57 +1,64 @@
 // @flow
 import React from 'react';
 import assert from 'assert';
-import { spy } from 'sinon';
+import { stub } from 'sinon';
 import { shallow, mount } from 'enzyme';
 
-import configureStore from 'redux-mock-store'
-import middleware from '../../../src/redux/middleware';
-
-import Timestamp from '../../../src/components/Timestamp/Timestamp.jsx';
+import Timestamp from '../../../src/components/timestamp/Timestamp.jsx';
 import styles from '../../../src/components/timestamp/Timestamp.css';
+
+import actions from '../../../src/redux/actions/index.js';
+
+import configureMockStore from 'redux-mock-store';
+import { testingMiddleware } from '../../../src/redux/middleware';
+
+const mockStore = configureMockStore(testingMiddleware);
 
 declare var describe: Function;
 declare var it: Function;
-declare var beforeEach: Function;
-declare var afterEach: Function;
 
 describe('The Timestamp component', () => {
-  // let store;
-  // let props;
+  it('should run getTime after mounting', () => {
+    const initialState = {
+      timestamp: {
+        now: 100,
+      },
+    };
 
-  // beforeEach(() => {
-  //   props = {
-  //     timestamp: {
-  //       now: 100,
-  //       getTime: () => 666,
-  //     },
-  //   };
+    const store = mockStore(initialState);
+    const timestamp = mount(<Timestamp store={store} />);
 
-  //   spy(props.timestamp, 'getTime');
-
-  //   store = configureStore(middleware)(props);
-  // });
-
-  it('should mount the refs', () => {
-    // const timestamp = mount(<Timestamp store={store}/>);
-    // const timestampInstance = timestamp.instance();
-
-    // assert.equal(
-    //   timestampInstance.timestampWrapper.toString(),
-    //   '[object HTMLDivElement]'
-    // );
-
-    // assert.equal(timestampInstance.timestamp.toString(), '[object HTMLDivElement]');
+    assert.equal(store.getActions()[0].type, 'GET_TIME');
   });
 
-  // it('should run getTime after mounting', () => {
-  //   const timestamp = mount(<Timestamp store={store}/>);
+  it('should set the correct text', () => {
+    const now = Date.now();
+    const text = 'moon!';
 
-  //   assert.equal(props.timestamp.getTime.callCount, 1);
-  //   assert.equal(timestamp.instance().timestampWrapper.getAttribute('data-seen'), 666);
-  // });
+    const initialState = {
+      timestamp: {
+        now,
+      },
+    };
 
-  // afterEach(() => {
-  //   props.timestamp.getTime.restore();
-  // });
+    const store = mockStore(initialState);
+    const timestamp = mount(<Timestamp store={store} text={text} />);
+
+    assert.equal(timestamp.text(), `moon! ${now}`);
+  });
+
+  it('should set the data-now', () => {
+    const now = Date.now();
+
+    const initialState = {
+      timestamp: {
+        now,
+      },
+    };
+
+    const store = mockStore(initialState);
+    const timestamp = mount(<Timestamp store={store} />);
+
+    assert.equal(timestamp.find(`[data-now=${now}]`).length, 1);
+  });
 });
