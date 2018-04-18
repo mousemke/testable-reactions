@@ -1,7 +1,4 @@
-# git ignore files
-# https://git-scm.com/docs/gitignore
 
-# filesystem
 .AppleDouble
 .DS_Store
 .Spotlight-V100
@@ -19,5 +16,5 @@ $RECYCLE.BIN/
 node_modules/
 npm-debug.log
 dist/**
-coverage/
+.nyc_output
 .torment/

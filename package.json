@@ -27,8 +27,8 @@
     "test:type": "flow",
     "test:unit": "babel-node node_modules/.bin/_mocha ./test/unit/**/*.spec.js -r ignore-styles -r ./test/unit/test-setup -R nyan",
     "test:unit:coverage": "npm run test:unit:coverage:cli && npm run test:unit:coverage:report",
-    "test:unit:coverage:cli": "NODE_ENV=development babel-node node_modules/.bin/babel-istanbul cover _mocha -- \"./test/unit/**/*.spec.js\" -R spec -r ignore-styles -r ./test/unit/test-setup",
-    "test:unit:coverage:report": "open coverage/lcov-report/index.html",
+    "test:unit:coverage:cli": "NODE_ENV=test nyc babel-node node_modules/.bin/_mocha ./test/unit/**/*.spec.js -r ignore-styles -r ./test/unit/test-setup",
+    "test:unit:coverage:report": "open ./.nyc_output/lcov-report/index.html",
     "test:visual": "babel-node node_modules/.bin/_mocha ./test/visual/index.js --slow 10s --timeout 200s --require co-mocha",
     "test:visual:clean": "rm -rf ./torment && npm run test:visual:baseline",
     "test:visual:debug": "DEBUG=nightmare SHOW=show npm run test:visual",
@@ -47,7 +47,7 @@
     "babel",
     "webpack",
     "docker",
-    "istanbul",
+    "nyc",
     "mocha",
     "torment",
     "enzyme",
@@ -64,16 +64,14 @@
   "devDependencies": {
     "autoprefixer": "8.3.0",
     "babel-cli": "6.26.0",
-    "babel-core": "6.26.0",
     "babel-eslint": "8.2.3",
-    "babel-istanbul": "0.12.2",
     "babel-loader": "7.1.4",
+    "babel-plugin-istanbul": "4.1.6",
     "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-preset-es2015": "6.24.1",
+    "babel-preset-env": "1.6.1",
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-3": "6.24.1",
     "babel-register": "6.26.0",
-    "babel-runtime": "6.26.0",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
     "co-mocha": "1.2.2",
     "css-loader": "0.28.11",
@@ -93,13 +91,11 @@
     "html-webpack-plugin": "3.2.0",
     "ignore-styles": "5.0.1",
     "is-port-available": "0.1.5",
-    "istanbul-coveralls": "1.0.3",
     "jsdom": "11.8.0",
     "json-loader": "0.5.7",
     "mocha": "5.1.0",
-    "mocha-istanbul": "0.3.0",
-    "mocha-jsdom": "1.1.0",
     "nightmare": "3.0.1",
+    "nyc": "11.6.0",
     "object-assign": "4.1.1",
     "postcss": "6.0.21",
     "postcss-flexbugs-fixes": "3.3.0",
@@ -107,7 +103,6 @@
     "pre-push": "0.1.1",
     "prettier": "1.12.1",
     "promise": "8.0.1",
-    "raf": "3.4.0",
     "react": "16.3.2",
     "react-dom": "16.3.2",
     "react-hot-loader": "4.0.1",
@@ -117,7 +112,6 @@
     "redux-logger": "3.0.6",
     "redux-thunk": "2.2.0",
     "sinon": "4.5.0",
-    "spa-http-server": "0.9.0",
     "style-loader": "0.20.3",
     "stylelint": "9.2.0",
     "stylelint-no-browser-hacks": "1.1.0",
@@ -129,6 +123,33 @@
     "webpack-cli": "2.0.14",
     "webpack-dev-server": "3.1.3",
     "whatwg-fetch": "2.0.4"
+  },
+  "nyc": {
+    "extension": [
+      ".js",
+      ".jsx"
+    ],
+    "watermarks": {
+      "lines": [60, 90],
+      "functions": [60, 90],
+      "branches": [60, 90],
+      "statements": [60, 90]
+    },
+    "sourceMap": false,
+    "instrument": false,
+    "exclude": [
+      "test/"
+    ],
+    "include": [
+      "src/"
+    ],
+    "reporter": [
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "cache": true,
+    "report-dir": "./.nyc_output"
   },
   "prepush": [
     "test:lint",

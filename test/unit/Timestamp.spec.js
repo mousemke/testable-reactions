@@ -12,29 +12,24 @@ declare var it: Function;
 declare var beforeEach: Function;
 
 describe('The Timestamp component', () => {
-  let props = {};
-
-  beforeEach(() => {
-    props = {
-      now: 100,
-      getTime: mock(() => 666),
-    };
-  });
-
-  it('should mount the refs', () => {
-    const timestamp = mount(<Timestamp {...props} />);
-
-    assert.equal(
-      timestamp.instance().timestampWrapper.toString(),
-      '[object HTMLDivElement]'
-    );
-    assert.equal(timestamp.instance().timestamp.toString(), '[object HTMLDivElement]');
-  });
-
-  it('should run getTime after mounting', () => {
-    const timestamp = mount(<Timestamp {...props} />);
-
-    assert.equal(props.getTime.callCount, 1);
-    assert.equal(timestamp.instance().timestampWrapper.getAttribute('data-seen'), 666);
-  });
+  // let props = {};
+  // beforeEach(() => {
+  //   props = {
+  //     now: 100,
+  //     getTime: mock(() => 666),
+  //   };
+  // });
+  // it('should mount the refs', () => {
+  //   const timestamp = mount(<Timestamp {...props} />);
+  //   assert.equal(
+  //     timestamp.instance().timestampWrapper.toString(),
+  //     '[object HTMLDivElement]'
+  //   );
+  //   assert.equal(timestamp.instance().timestamp.toString(), '[object HTMLDivElement]');
+  // });
+  // it('should run getTime after mounting', () => {
+  //   const timestamp = mount(<Timestamp {...props} />);
+  //   assert.equal(props.getTime.callCount, 1);
+  //   assert.equal(timestamp.instance().timestampWrapper.getAttribute('data-seen'), 666);
+  // });
 });

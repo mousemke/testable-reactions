@@ -13,7 +13,7 @@ import styles from './Timestamp.css';
 class Timestamp extends Component<any> {
   static defaultProp = {
     text: '',
-  }
+  };
 
   props: {
     now: number,
@@ -28,7 +28,6 @@ class Timestamp extends Component<any> {
     this.props.onTimestampView();
   }
 
-
   /**
    * ## render
    *
@@ -37,30 +36,30 @@ class Timestamp extends Component<any> {
    * @return {JSX} compiled jsx
    */
   render() {
-    const {
-      now,
-      text,
-    } = this.props;
+    const { now, text } = this.props;
 
     return (
-      <div ref={el => (this.timestampWrapper = el)} className={styles.timestampWrapper}>
-        <div ref={el => (this.timestamp = el)} className={styles.timestamp} now={now}>
-        {
-          `${text} ${now}`
-        }
+      <div
+        ref={el => (this.timestampWrapper = el)}
+        className={styles.timestampWrapper}
+      >
+        <div
+          ref={el => (this.timestamp = el)}
+          className={styles.timestamp}
+          now={now}
+        >
+          {`${text} ${now}`}
         </div>
       </div>
     );
   }
 }
 
-
 function mapStateToProps(state) {
   return {
     now: state.timestamp.now,
   };
 }
-
 
 const mapDispatchToProps = dispatch => timestampActions(dispatch).actions;
 
