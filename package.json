@@ -25,7 +25,7 @@
     "test:style": "node_modules/.bin/stylelint './src/**/*.css'",
     "test:style:fix": "node_modules/.bin/stylelint './src/**/*.css' --fix",
     "test:type": "flow",
-    "test:unit": "babel-node node_modules/.bin/_mocha ./test/unit/**/*.spec.js -r ignore-styles -r ./test/unit/test-setup -R nyan",
+    "test:unit": "babel-node node_modules/.bin/_mocha ./test/unit/**/**/*.spec.js -r ignore-styles -r ./test/unit/test-setup -R nyan",
     "test:unit:coverage": "npm run test:unit:coverage:cli && npm run test:unit:coverage:report",
     "test:unit:coverage:cli": "NODE_ENV=test nyc babel-node node_modules/.bin/_mocha ./test/unit/**/*.spec.js -r ignore-styles -r ./test/unit/test-setup",
     "test:unit:coverage:report": "open ./.nyc_output/lcov-report/index.html",
@@ -110,6 +110,7 @@
     "react-router-dom": "4.2.2",
     "redux": "4.0.0",
     "redux-logger": "3.0.6",
+    "redux-mock-store": "1.5.1",
     "redux-thunk": "2.2.0",
     "sinon": "4.5.0",
     "style-loader": "0.20.3",
@@ -130,10 +131,22 @@
       ".jsx"
     ],
     "watermarks": {
-      "lines": [60, 90],
-      "functions": [60, 90],
-      "branches": [60, 90],
-      "statements": [60, 90]
+      "lines": [
+        60,
+        90
+      ],
+      "functions": [
+        60,
+        90
+      ],
+      "branches": [
+        60,
+        90
+      ],
+      "statements": [
+        60,
+        90
+      ]
     },
     "sourceMap": false,
     "instrument": false,

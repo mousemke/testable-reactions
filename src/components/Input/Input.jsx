@@ -1,13 +1,12 @@
 // @flow
 import React, { Component } from 'react';
-// import Flounder from 'flounder';
 
 import styles from './Input.css';
 
 /**
  * ## Input
  *
- * contains a styled input fieöd
+ * contains a styled input field
  */
 export default class Input extends Component<any> {
   input: ?HTMLInputElement;

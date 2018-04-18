@@ -37,8 +37,11 @@ class Pageheader extends Component<any> {
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.loginWrapper}>Hello {name}</div>
-          <Link to="/nmm" className={styles.homeButton}>
+          <Link to="/" className={styles.homeButton}>
             Home
+          </Link>
+          <Link to="/nmm" className={styles.homeButton}>
+            Somewhere
           </Link>
           <Input placeholder={'Search'} />
           <Button title={'Submit'} />
@@ -49,50 +52,9 @@ class Pageheader extends Component<any> {
 }
 
 function mapStateToProps(state) {
-  return {
-    // dropdownOptions: state.timestamp.now,
-  };
+  return {};
 }
 
 const mapDispatchToProps = dispatch => pageHeaderActions(dispatch).actions;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pageheader);
-
-// // @flow
-// import React, { Component } from 'react';
-
-// import styles from './PageHeader.css';
-
-// type Props = {
-//   name: string,
-// };
-
-// /**
-//  * ## Pageheader
-//  *
-//  * top of the page
-//  */
-// class Pageheader extends Component<Props> {
-//   static defaultProps = {
-//     name: 'anonymous',
-//   };
-
-//   props: Props;
-
-//   *
-//    * ## render
-//    *
-//    * renders the header
-//    *
-//    * @return {JSX} compiled jsx
-
-//   render() {
-//     return (
-//       <div className={styles.pageHeaderWrapper}>
-//         Hello {this.props.name}, This app seems to be working! Or is it ....
-//       </div>
-//     );
-//   }
-// }
-
-// export default Pageheader;
