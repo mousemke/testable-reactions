@@ -256,6 +256,10 @@ Prettier is an opinionated code formatter.
 ## change log
 --------
 
+# 0.3.1
+
++ republished afer a readme error
+
 # 0.3.0
 
 + added redux

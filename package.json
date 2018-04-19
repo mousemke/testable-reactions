@@ -2,7 +2,7 @@
   "name": "testable-reactions",
   "description": "A fully testable react/webpack project boilerplate",
   "main": "src/index.js",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "engines": {
     "node": ">=7.3.0"
   },
