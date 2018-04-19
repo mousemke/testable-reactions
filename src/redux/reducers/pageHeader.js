@@ -2,12 +2,12 @@
 import { PAGE_HEADER_ACTION_TYPES } from '../../constants/actionTypes';
 
 export type PageHeaderState = {
-  +amountClicked: ?Number,
-  +previousSearches: Array,
+  +amountClicked: ?number,
+  +previousSearches: Array<string>,
 };
 
 export type PageHeaderAction =
-| { type: 'CLICK_SEARCH_BUTTON', amountClicked: number, previousSearches: Array }
+| { type: 'CLICK_SEARCH_BUTTON', amountClicked: number, previousSearches: Array<string> }
 | { type: 'CHANGE_SEARCH_TERM', searchTerm: string };
 
 const initialState = {

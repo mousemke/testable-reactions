@@ -12,6 +12,7 @@ export default class Button extends Component<any> {
   static defaultProps = {
     className: '',
     title: '',
+    value: '',
     onButtonClick: () => null,
   };
 
@@ -19,6 +20,7 @@ export default class Button extends Component<any> {
     className: string,
     title: string,
     onButtonClick: Function,
+    value: string,
   };
 
   /**
