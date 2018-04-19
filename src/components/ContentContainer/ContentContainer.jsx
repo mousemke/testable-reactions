@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+
 import styles from './ContentContainer.css';
 
 /**
@@ -8,6 +9,15 @@ import styles from './ContentContainer.css';
  * central content container
  */
 export default class ContentContainer extends Component<any> {
+  static defaultProps = {
+    title: '',
+  };
+
+  props: {
+    children: ?Array<any>,
+    title: string,
+  };
+
   /**
    * ## render
    *
@@ -16,14 +26,14 @@ export default class ContentContainer extends Component<any> {
    * @return {JSX} compiled jsx
    */
   render() {
-    const { title } = this.props;
+    const { title, children } = this.props;
 
     return (
       <div className={styles.wrapper}>
         <div className={styles.header}>
           <div className={styles.headerText}>{title}</div>
         </div>
-        <div className={styles.content}>{this.props.children}</div>
+        <div className={styles.content}>{children}</div>
       </div>
     );
   }

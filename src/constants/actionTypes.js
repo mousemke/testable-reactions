@@ -8,4 +8,8 @@ export const PAGE_HEADER_ACTION_TYPES = {
   CHANGE_SEARCH_TERM: 'CHANGE_SEARCH_TERM',
 };
 
-export default Object.assign({}, TIMESTAMP_ACTION_TYPES, PAGE_HEADER_ACTION_TYPES);
+export default Object.assign(
+  {},
+  TIMESTAMP_ACTION_TYPES,
+  PAGE_HEADER_ACTION_TYPES
+);

@@ -14,14 +14,13 @@ export const changeSearchTerm = (e: Object) => (dispatch: Dispatch) => {
   });
 };
 
-export const searchButtonClick = () => (dispatch: Dispatch, getState: GetState) => {
+export const searchButtonClick = () => (
+  dispatch: Dispatch,
+  getState: GetState
+) => {
   const state = getState();
 
-  const {
-    amountClicked,
-    previousSearches,
-    searchTerm,
-  } = state.pageHeader;
+  const { amountClicked, previousSearches, searchTerm = '' } = state.pageHeader;
 
   previousSearches.push(searchTerm);
 
@@ -31,7 +30,6 @@ export const searchButtonClick = () => (dispatch: Dispatch, getState: GetState) 
     previousSearches: previousSearches,
   });
 };
-
 
 export default {
   changeSearchTerm,

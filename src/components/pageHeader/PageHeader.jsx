@@ -2,16 +2,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import pageHeaderActions from '../../redux/action-builders/pageHeader';
 
 import Input from '../input/Input.jsx';
 import Button from '../button/Button.jsx';
 
 import styles from './PageHeader.css';
-
-type Props = {
-  name: string,
-};
 
 /**
  * ## Pageheader
@@ -21,6 +18,14 @@ type Props = {
 class Pageheader extends Component<any> {
   static defaultProps = {
     name: 'anonymous',
+  };
+
+  props: {
+    name: string,
+    searchTerm: string,
+    amountClicked: number,
+    onChangeSearchTerm: Function,
+    onSearchButtonClick: Function,
   };
 
   /**
@@ -34,6 +39,7 @@ class Pageheader extends Component<any> {
     const {
       name,
       searchTerm,
+      amountClicked,
       onChangeSearchTerm,
       onSearchButtonClick,
     } = this.props;
@@ -48,13 +54,10 @@ class Pageheader extends Component<any> {
           <Link to="/nmm" className={styles.homeButton}>
             Somewhere
           </Link>
-          <Input
-            placeholder={'Search'}
-            onChange={onChangeSearchTerm}
-          />
+          <Input placeholder={'Search'} onChange={onChangeSearchTerm} />
           <Button
-            title={'Submit'}
-            value= {searchTerm}
+            title={`Submit (${amountClicked})`}
+            value={searchTerm}
             onButtonClick={onSearchButtonClick}
           />
         </div>
@@ -64,10 +67,7 @@ class Pageheader extends Component<any> {
 }
 
 function mapStateToProps(state) {
-  const {
-    amountClicked,
-    searchTerm,
-  } = state.pageHeader;
+  const { amountClicked, searchTerm } = state.pageHeader;
 
   return {
     amountClicked,

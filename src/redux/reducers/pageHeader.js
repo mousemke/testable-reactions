@@ -7,8 +7,12 @@ export type PageHeaderState = {
 };
 
 export type PageHeaderAction =
-| { type: 'CLICK_SEARCH_BUTTON', amountClicked: number, previousSearches: Array<string> }
-| { type: 'CHANGE_SEARCH_TERM', searchTerm: string };
+  | {
+      type: 'CLICK_SEARCH_BUTTON',
+      amountClicked: number,
+      previousSearches: Array<string>,
+    }
+  | { type: 'CHANGE_SEARCH_TERM', searchTerm: string };
 
 const initialState = {
   amountClicked: 0,

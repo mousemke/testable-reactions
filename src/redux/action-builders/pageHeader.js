@@ -1,8 +1,5 @@
 // @flow
-import {
-  searchButtonClick,
-  changeSearchTerm,
-} from '../actions/pageHeader';
+import { searchButtonClick, changeSearchTerm } from '../actions/pageHeader';
 
 /* eslint-disable import/no-unresolved */
 import type { Dispatch } from 'testable-reactions-types';
@@ -10,5 +7,6 @@ import type { Dispatch } from 'testable-reactions-types';
 
 export default (dispatch: Dispatch) => ({
   onSearchButtonClick: () => dispatch(searchButtonClick()),
-  onChangeSearchTerm: (e: Object) => dispatch(changeSearchTerm({target:e.target})),
+  onChangeSearchTerm: (e: Object) =>
+    dispatch(changeSearchTerm({ target: e.target })),
 });

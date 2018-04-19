@@ -5,7 +5,6 @@ import { TIMESTAMP_ACTION_TYPES } from '../../constants/actionTypes';
 import type { Dispatch } from 'testable-reactions-types';
 /* eslint-enable */
 
-// export const getTime = () => (dispatch, getState) => {
 export const getTime = () => (dispatch: Dispatch) => {
   dispatch({
     type: TIMESTAMP_ACTION_TYPES.GET_TIME,
