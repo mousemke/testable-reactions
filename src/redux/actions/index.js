@@ -1,6 +1,8 @@
 // @flow
-import { getTime } from './timestamp';
+import timestampActions from './timestamp';
+import pageHeaderActions from './pageHeader';
 
 export default {
-  getTime,
+  ...timestampActionsm,
+  ...pageHeaderActions,
 };

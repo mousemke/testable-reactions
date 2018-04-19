@@ -19,13 +19,14 @@ export default class Input extends Component<any> {
    * @return {JSX} compiled jsx
    */
   render() {
-    const { className, placeholder } = this.props;
+    const { className, placeholder, onChange } = this.props;
 
     return (
       <input
         ref={el => (this.input = el)}
         placeholder={placeholder}
         className={`${styles.input}  ${className || ''}`}
+        onChange={onChange}
       />
     );
   }
