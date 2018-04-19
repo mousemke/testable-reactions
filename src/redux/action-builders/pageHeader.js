@@ -10,5 +10,5 @@ import type { Dispatch } from 'testable-reactions-types';
 
 export default (dispatch: Dispatch) => ({
   onSearchButtonClick: () => dispatch(searchButtonClick()),
-  onChangeSearchTerm: (e) => dispatch(changeSearchTerm(e)),
+  onChangeSearchTerm: (e: Object) => dispatch(changeSearchTerm({target:e.target})),
 });

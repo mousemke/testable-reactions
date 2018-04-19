@@ -11,6 +11,8 @@ import styles from './Timestamp.css';
  * contains a timestamp
  */
 class Timestamp extends Component<any> {
+  timestamp: ?HTMLDivElement;
+
   static defaultProps = {
     text: '',
   };
@@ -18,6 +20,7 @@ class Timestamp extends Component<any> {
   props: {
     now: number,
     onTimestampView: Function,
+    text: string,
   };
 
   componentDidMount() {

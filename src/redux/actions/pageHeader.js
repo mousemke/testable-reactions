@@ -2,10 +2,10 @@
 import { PAGE_HEADER_ACTION_TYPES } from '../../constants/actionTypes';
 
 /* eslint-disable import/no-unresolved */
-import type { Dispatch } from 'testable-reactions-types';
+import type { Dispatch, GetState } from 'testable-reactions-types';
 /* eslint-enable */
 
-export const changeSearchTerm = (e: Object) => (dispatch: Dispatch, getState) => {
+export const changeSearchTerm = (e: Object) => (dispatch: Dispatch) => {
   const searchTerm = e.target.value;
 
   dispatch({
@@ -14,7 +14,7 @@ export const changeSearchTerm = (e: Object) => (dispatch: Dispatch, getState) =>
   });
 };
 
-export const searchButtonClick = () => (dispatch: Dispatch, getState) => {
+export const searchButtonClick = () => (dispatch: Dispatch, getState: GetState) => {
   const state = getState();
 
   const {
