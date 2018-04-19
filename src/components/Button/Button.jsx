@@ -9,7 +9,17 @@ import styles from './Button.css';
  * cotains a styled button
  */
 export default class Button extends Component<any> {
-  button: ?HTMLButtonElement;
+  static defaultProps = {
+    className: '',
+    title: '',
+    onButtonClick: () => null,
+  };
+
+  props: {
+    className: string,
+    title: string,
+    onButtonClick: Function,
+  };
 
   /**
    * ## render
@@ -19,12 +29,13 @@ export default class Button extends Component<any> {
    * @return {JSX} compiled jsx
    */
   render() {
-    const { className, title } = this.props;
+    const { className, title, onButtonClick, value } = this.props;
 
     return (
       <button
-        ref={el => (this.button = el)}
         className={`${styles.button} ${className || ''}`}
+        onClick={onButtonClick}
+        value={value}
       >
         {title}
       </button>

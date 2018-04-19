@@ -31,7 +31,12 @@ class Pageheader extends Component<any> {
    * @return {JSX} compiled jsx
    */
   render() {
-    const { name } = this.props;
+    const {
+      name,
+      searchTerm,
+      onChangeSearchTerm,
+      onSearchButtonClick,
+    } = this.props;
 
     return (
       <div className={styles.wrapper}>
@@ -43,8 +48,15 @@ class Pageheader extends Component<any> {
           <Link to="/nmm" className={styles.homeButton}>
             Somewhere
           </Link>
-          <Input placeholder={'Search'} />
-          <Button title={'Submit'} />
+          <Input
+            placeholder={'Search'}
+            onChange={onChangeSearchTerm}
+          />
+          <Button
+            title={'Submit'}
+            value= {searchTerm}
+            onButtonClick={onSearchButtonClick}
+          />
         </div>
       </div>
     );
@@ -52,7 +64,15 @@ class Pageheader extends Component<any> {
 }
 
 function mapStateToProps(state) {
-  return {};
+  const {
+    amountClicked,
+    searchTerm,
+  } = state.pageHeader;
+
+  return {
+    amountClicked,
+    searchTerm,
+  };
 }
 
 const mapDispatchToProps = dispatch => pageHeaderActions(dispatch);

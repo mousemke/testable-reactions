@@ -12,3 +12,7 @@ export const getTime = () => (dispatch: Dispatch) => {
     now: Date.now(),
   });
 };
+
+export default {
+  getTime,
+};
