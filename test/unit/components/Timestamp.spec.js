@@ -1,13 +1,9 @@
 // @flow
 import React from 'react';
 import assert from 'assert';
-import { stub } from 'sinon';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 
 import Timestamp from '../../../src/components/timestamp/Timestamp.jsx';
-import styles from '../../../src/components/timestamp/Timestamp.css';
-
-import actions from '../../../src/redux/actions/index.js';
 
 import configureMockStore from 'redux-mock-store';
 import { testingMiddleware } from '../../../src/redux/middleware';
@@ -26,7 +22,7 @@ describe('The Timestamp component', () => {
     };
 
     const store = mockStore(initialState);
-    const timestamp = mount(<Timestamp store={store} />);
+    mount(<Timestamp store={store} />);
 
     assert.equal(store.getActions()[0].type, 'GET_TIME');
   });

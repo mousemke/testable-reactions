@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "build": "PRODUCTION=true ./node_modules/.bin/webpack --mode production",
-    "precommit": "echo hi",
+    "precommit": "npm run test:lint:fix && npm run test:style:fix && npm run test:unit && npm run test:type",
     "prettier": "prettier --parser flow --single-quote --trailing-comma es5 --write \"src/**/*.jsx\" \"src/**/*.js\" \"test/**/*.js\" && git add .",
     "postinstall": "npm run test:visual:baseline",
     "serve": "NODE_ENV=dev ./node_modules/.bin/webpack-dev-server --devtool eval --progress --colors --hot --content-base dist --port 4080 --host 0.0.0.0 --history-api-fallback --mode development",
@@ -113,6 +113,7 @@
     "redux-mock-store": "1.5.1",
     "redux-thunk": "2.2.0",
     "sinon": "4.5.0",
+    "spa-http-server": "0.9.0",
     "style-loader": "0.20.3",
     "stylelint": "9.2.0",
     "stylelint-no-browser-hacks": "1.1.0",
@@ -169,5 +170,6 @@
     "test:unit",
     "test:type",
     "test:visual"
-  ]
+  ],
+  "dependencies": {}
 }

@@ -10,8 +10,4 @@ require('whatwg-fetch'); // eslint-disable-line import/no-commonjs, import/no-un
 if (!Object.assign) {
   Object.assign = require('object-assign'); // eslint-disable-line import/no-commonjs
 }
-
-if (process.env.NODE_ENV === 'TEST') {
-  require('raf').polyfill(global); // eslint-disable-line import/no-commonjs
-}
 /* eslint-enable import/unambiguous */

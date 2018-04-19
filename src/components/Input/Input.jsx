@@ -11,6 +11,18 @@ import styles from './Input.css';
 export default class Input extends Component<any> {
   input: ?HTMLInputElement;
 
+  static defaultProps = {
+    className: '',
+    placeholder: '',
+    onChange: () => {},
+  };
+
+  props: {
+    className: string,
+    placeholder: string,
+    onChange: Function,
+  };
+
   /**
    * ## render
    *

@@ -9,6 +9,8 @@ import styles from './Button.css';
  * cotains a styled button
  */
 export default class Button extends Component<any> {
+  button: ?HTMLButtonElement;
+
   static defaultProps = {
     className: '',
     title: '',
@@ -35,6 +37,7 @@ export default class Button extends Component<any> {
 
     return (
       <button
+        ref={el => (this.button = el)}
         className={`${styles.button} ${className || ''}`}
         onClick={onButtonClick}
         value={value}
