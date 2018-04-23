@@ -13,14 +13,14 @@ WORKDIR /opt/app
 
 # Preferably use COPY over ADD. Beware, COPY is picky about slashes! See
 # https://docs.docker.com/engine/reference/builder/#copy
-# Best practise - first copy file to install dependencies and install dependencies
+# Best practice - first copy file to install dependencies and install dependencies
 # to make best use of caching
 COPY package.json ./
 
 # TODO this takes a lot of time, evaluate to use images with pre-installed packages
 RUN npm install
 
-# projcet src files are added in second step.
+# project src files are added in second step.
 # If you copy '.' like below from this repo's root file, be sure to include
 # a '.dockerignore' file to prevent wrong files to be copied (like 'node_modules'
 # when setup on a Mac cannot be used in a Linux Docker container!)

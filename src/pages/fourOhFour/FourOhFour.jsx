@@ -5,7 +5,7 @@ import ContentContainer from '../../components/contentContainer/ContentContainer
 /**
  * ## 404
  *
- * if you cant find anything else
+ * if you can't find anything else
  */
 export class FourOhFour extends Component<any> {
   /**
