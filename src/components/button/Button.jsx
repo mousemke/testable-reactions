@@ -6,7 +6,7 @@ import styles from './Button.css';
 /**
  * ## Button
  *
- * cotains a styled button
+ * contains a styled button
  */
 export default class Button extends Component<any> {
   button: ?HTMLButtonElement;

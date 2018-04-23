@@ -52,7 +52,7 @@ describe('The Button component', () => {
     assert.equal(props.onButtonClick.callCount, 1);
   });
 
-  it('shouldnt break if no onClick provided', () => {
+  it('should not break if no onClick provided', () => {
     const button = shallow(<Button />);
 
     button.simulate('click');

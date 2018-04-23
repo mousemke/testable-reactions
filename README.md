@@ -23,7 +23,7 @@ this project includes:
 + [Prettier](#prettier)
 
 
-Everyone loves to start new projects. This repo is a blank, new frontend project just for us! It's an amalgamation of best practises for how to setup and organize a project. You don't have to use it in your projects in this way, but it is recommended - it makes easier for developer onboarding.
+Everyone loves to start new projects. This repo is a blank, new frontend project just for us! It's an amalgamation of best practices for how to setup and organize a project. You don't have to use it in your projects in this way, but it is recommended - it makes easier for developer onboarding.
 
 Getting Started
 ----
@@ -49,7 +49,7 @@ The entry point on your new app is `./src/index.js`, which is called by `./index
 Folder Structure Convention
 ----
 
-`src`: main source code. Don't use `app`, even though that is comnon for React apps. `src` works for backend services and even Java projects!
+`src`: main source code. Don't use `app`, even though that is common for React apps. `src` works for backend services and even Java projects!
 
 `dist`: final generated files for production usage (`target` folder for Java projects).
 
@@ -170,7 +170,7 @@ When mapping ports from container to host in the `docker-compose.yml` file like 
     ports:
       - 4080:4080
 ```
-the host port (first number) needs to be choosen wisely. It needs to be unique for all services running on one host, and since we run services on clusters, there can be a multitude of services. Only ports in the range from 4000 to 9999 are allowed due to Security Groups.
+the host port (first number) needs to be chosen wisely. It needs to be unique for all services running on one host, and since we run services on clusters, there can be a multitude of services. Only ports in the range from 4000 to 9999 are allowed due to Security Groups.
 
 
 # NYC
@@ -258,7 +258,7 @@ Prettier is an opinionated code formatter.
 
 # 0.3.1
 
-+ republished afer a readme error
++ republished after a readme error
 
 # 0.3.0
 
